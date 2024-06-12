@@ -7,6 +7,19 @@ import { Button, Toast } from 'vant';
 import './assets/less/vant_theme.less'
 
 
+import { ElCascaderPanel } from "element-plus";
+import 'element-plus/theme-chalk/index.css'
 
 
-createApp(App).use(router).use(Button).use(Toast).mount('#app')
+
+const app = createApp(App)
+// vant的样式
+app.use(Button).use(Toast)
+
+// element-plus组件的注册
+app.use(ElCascaderPanel)
+
+
+
+app.use(router)
+app.mount('#app')
