@@ -8,7 +8,7 @@
           <div class="title">{{ item.title }}</div>
         </div>
         <div class="menu-list">
-          <div class="menu-item" v-for="it in item.list" :key="it.path">
+          <div class="menu-item" v-for="it in item.list" :key="it.path" @click="goIn(it)">
             <div class="img-box"> </div>
             <div class="item-title">
               {{ it.title }}
@@ -21,16 +21,13 @@
 </template>
 
 <script setup>
+  import { useRoute, useRouter } from 'vue-router'
+  const { push } = useRouter()
   const menu_list = [
     {
       type: 'function',
       title: '功能',
       list: [
-        {
-          title: '首页',
-          icon: 'home-o',
-          path: '/home'
-        },
         {
           title: '分类',
           icon: 'apps-o',
@@ -70,6 +67,12 @@
       ]
     }
   ]
+  const goIn = row => {
+    console.log(row)
+    push({
+      path: row.path
+    })
+  }
 </script>
 
 <style lang="less" scoped>
@@ -112,7 +115,7 @@
             }
             .item-title {
               text-align: center;
-              font-size: var(--cp-font-size)
+              font-size: var(--cp-font-size);
             }
           }
         }
