@@ -1,24 +1,25 @@
 // vant_theme.less
-
 :root {
-  // 问诊患者：色板
-  --cp-primary: #16c2a3;
-  // --cp-plain: #eaf8f6;
-  // --cp-orange: #fca21c;
-  // --cp-text1: #121826;
-  // --cp-text2: #3c3e42;
-  // --cp-text3: #6f6f6f;
-  // --cp-tag: #848484;
-  // --cp-dark: #979797;
-  // --cp-tip: #c3c3c5;
-  // --cp-disable: #d9dbde;
-  // --cp-line: #ededed;
-  // --cp-bg: #f6f7f9;
-  // --cp-price: #eb5757;
-  // // 覆盖 Vant 主体色
-  // // 官方文档：ConfigProvider 全局配置
-  --van-primary-color: var(--cp-primary);
+  // 颜色色板
+  --cp-primary: #EC6A00; // 主要颜色
+  --cp-text-color: #333333; // 主要文字颜色
+  --cp-bg-color: #F7F9FA; // 一级背景颜色-浅灰色
+  // 尺寸
+  --cp-margin: 16px;
+  --cp-font-size: 16px;
+  --cp-font-size-middle: 14px;
+  --cp-font-size-small: 12px;
+  // 覆盖 Vant 主体色
+  // 官方文档：ConfigProvider 全局配置
 
-  // --van-button-primary-color: red;
+  // 按钮主要颜色
+  --van-primary-color: var(--cp-primary);
   --van-button-primary-background: var(--cp-primary);
+
+
+
+  // navBar 全局样式主题
+  --van-nav-bar-icon-color:	var(--cp-text-color);
+  --van-nav-bar-text-color:	var(--cp-text-color);
+  --van-nav-bar-title-font-size:	16px;
 }

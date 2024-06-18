@@ -1,9 +1,10 @@
 <template>
 	<div class="container">
 		<div id="reader"></div>
+		<slot name="navBar"></slot>
+		<button @click="getCameras">扫码</button>
+		<span>{{ result }}</span>
 	</div>
-	<button @click="getCameras">扫码</button>
-	<span>{{ result }}</span>
 </template>
 
 <script setup>
@@ -77,7 +78,7 @@ const start = () => {
 };
 const stop = () => {
 	html5QrCode.value
-		.stop()
+		?.stop()
 		.then((ignore) => {
 			// QR Code scanning is stopped.
 			console.log("QR Code scanning stopped.", ignore);
