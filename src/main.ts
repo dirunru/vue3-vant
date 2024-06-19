@@ -6,6 +6,7 @@ import 'vant/lib/index.css'
 import { Button, Toast, Empty, NavBar, Image, Icon, Sidebar, SidebarItem, Swipe, SwipeItem } from 'vant'
 
 import './assets/less/index.less'
+// 要覆盖的主题样式
 import "./assets/scss/element_theme.scss"
 
 const app = createApp(App)

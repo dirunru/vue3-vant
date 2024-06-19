@@ -37,25 +37,25 @@ module.exports = defineConfig({
       }
     }
     const plugins = [
-      // AutoImport({
-      //   imports: ['vue', 'vue-router', 'pinia'],
-      //   dts: './auto-import.d.ts' // 生成 `auto-import.d.ts` 全局声明（ts项目添加上）
-      // }),
-      require('unplugin-auto-import/webpack')({
-        imports: ['vue', 'vue-router', 'pinia'], // 自动导入vue和vue-router相关函数
-        dts: './auto-import.d.ts', // 生成 `auto-import.d.ts` 全局声明（ts项目添加上）
-        eslintrc: {
-          globalsPropValue: true
-        }
+      AutoImport({
+        imports: ['vue', 'vue-router', 'pinia'],
+        dts: './auto-import.d.ts' // 生成 `auto-import.d.ts` 全局声明（ts项目添加上）
       }),
+      // require('unplugin-auto-import/webpack')({
+      //   imports: ['vue', 'vue-router', 'pinia'], // 自动导入vue和vue-router相关函数
+      //   dts: './auto-import.d.ts', // 生成 `auto-import.d.ts` 全局声明（ts项目添加上）
+      //   eslintrc: {
+      //     globalsPropValue: true
+      //   }
+      // }),
       // 自动导入
       AutoImport({
-        resolvers: [ElementPlusResolver()],
+        resolvers: [ElementPlusResolver({ importStyle: 'scss' })],
         dts: 'typings/auto-imports-element-plus.d.ts'
       }),
       // 自动注册组件
       Components({
-        resolvers: [ElementPlusResolver()],
+        resolvers: [ElementPlusResolver({ importStyle: 'scss' })],
         dirs: ['src/components', 'src/views'],
         dts: 'typings/auto-components-element-plus.d.ts'
       })

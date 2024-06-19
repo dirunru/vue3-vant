@@ -5,6 +5,8 @@
 </template>
 
 <script setup>
+  import { ref } from 'vue'
+
   import STable from '@/components/STable.vue'
   // 已选缺陷列表
   const tableData = ref([
