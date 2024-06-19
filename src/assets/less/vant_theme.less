@@ -1,14 +1,16 @@
 // vant_theme.less
 :root {
   // 颜色色板
-  --cp-primary: #EC6A00; // 主要颜色
+  --cp-primary: #ec6a00; // 主要颜色
   --cp-text-color: #333333; // 主要文字颜色
-  --cp-bg-color: #F7F9FA; // 一级背景颜色-浅灰色
+  --cp-bg-color: #f7f9fa; // 一级背景颜色-浅灰色
+  --cp-bg-color-white: #fff;
   // 尺寸
   --cp-margin: 16px;
   --cp-font-size: 16px;
   --cp-font-size-middle: 14px;
   --cp-font-size-small: 12px;
+  --cp-radius: 8px;
   // 覆盖 Vant 主体色
   // 官方文档：ConfigProvider 全局配置
 
@@ -16,10 +18,26 @@
   --van-primary-color: var(--cp-primary);
   --van-button-primary-background: var(--cp-primary);
 
-
-
   // navBar 全局样式主题
-  --van-nav-bar-icon-color:	var(--cp-text-color);
-  --van-nav-bar-text-color:	var(--cp-text-color);
-  --van-nav-bar-title-font-size:	16px;
+  --van-nav-bar-icon-color: var(--cp-text-color);
+  --van-nav-bar-text-color: var(--cp-text-color);
+  --van-nav-bar-title-font-size: 16px;
+
+  // 侧边栏 样式
+  --van-sidebar-width: 100px;
+  --van-sidebar-line-height:	24px;
+  --van-sidebar-background:	#ffffff;
+  --van-sidebar-padding:	8px var(--van-padding-sm);
+  // --van-sidebar-font-size	var(--van-font-size-md)	-
+  // --van-sidebar-text-color	var(--van-text-color)	-
+  // --van-sidebar-disabled-text-color	var(--van-text-color-3)	-
+  // --van-sidebar-active-color	var(--van-active-color)	-
+  // --van-sidebar-selected-font-weight	var(--van-font-bold)	-
+  // --van-sidebar-selected-text-color	var(--van-text-color)	-
+  // --van-sidebar-selected-border-width	4px	-
+  // --van-sidebar-selected-border-height	16px	-
+  // --van-sidebar-selected-border-color	var(--van-primary-color)	-
+  --van-sidebar-selected-background:#FFF2EA;
+  // 轮播样式
+  --van-swipe-indicator-inactive-background:#ffacac;
 }

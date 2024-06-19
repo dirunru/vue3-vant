@@ -95,7 +95,7 @@ const stop = () => {
 <style lang="less" scoped>
 .container {
 	position: relative;
-	height: 80%;
+	height: 40%;
 	width: 100%;
 	background: rgba(#000000, 0.48);
 }

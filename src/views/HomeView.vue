@@ -9,7 +9,9 @@
         </div>
         <div class="menu-list">
           <div class="menu-item" v-for="it in item.list" :key="it.path" @click="goIn(it)">
-            <div class="img-box"> </div>
+            <div class="img-box">
+              <van-icon class="van-icon-menu" :name="it.icon" size="30" />
+            </div>
             <div class="item-title">
               {{ it.title }}
             </div>
@@ -31,17 +33,27 @@
         {
           title: '分类',
           icon: 'apps-o',
-          path: '/about'
+          path: 'about'
+        },
+        {
+          title: '环状表',
+          icon: 'cart-o',
+          path: 'echart'
+        },
+        {
+          title: '表格',
+          icon: 'cart-o',
+          path: 'table'
         },
         {
           title: '购物车',
           icon: 'cart-o',
-          path: '/cart'
+          path: 'cart'
         },
         {
-          title: '购物车',
+          title: '嵌套路由',
           icon: 'cart-o',
-          path: '/cart'
+          path: 'black'
         }
       ]
     },
@@ -52,17 +64,17 @@
         {
           title: '首页',
           icon: 'home-o',
-          path: '/home'
+          path: 'home'
         },
         {
           title: '分类',
           icon: 'apps-o',
-          path: '/category'
+          path: 'category'
         },
         {
           title: '购物车',
           icon: 'cart-o',
-          path: '/cart'
+          path: 'cart'
         }
       ]
     }
@@ -70,7 +82,7 @@
   const goIn = row => {
     console.log(row)
     push({
-      path: row.path
+      name: row.path
     })
   }
 </script>
@@ -111,11 +123,14 @@
               width: 60px;
               height: 60px;
               border-radius: 10px;
-              background: linear-gradient(180deg, #ffacac 0%, #ff4c4a 100%);
+              background: linear-gradient(180deg, #ffacac 50%, #ff4c4a 100%);
             }
             .item-title {
               text-align: center;
-              font-size: var(--cp-font-size);
+              font-size: var(--cp-font-size-middle);
+            }
+            .van-icon-menu {
+              line-height: 60px;
             }
           }
         }

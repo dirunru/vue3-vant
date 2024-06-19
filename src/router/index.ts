@@ -1,15 +1,43 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import BlackLayout from '../views/layout/BlackLayout.vue'
 import HomeView from '../views/HomeView.vue'
-
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
+    redirect: '/home'
+  },
+  {
+    path: '/home',
     name: 'home',
-    alias: '/home',
     meta: {
-      title: '首页'
+      title: '首页',
     },
     component: HomeView
+  },
+  {
+    path: '/black',
+    name: 'black',
+    meta: {
+      title: '布局',
+    },
+    component: BlackLayout,
+    children:[{
+      path: 'about',
+      name: 'about-2',
+      meta: {
+        title: '关于'
+      },
+      component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    },
+    {
+      path: 'echart',
+      name: 'echart-2',
+      meta: {
+        title: '环表'
+      },
+      component: () => import(/* webpackChunkName: "echart" */ '../views/Echart.vue')
+    },
+  ]
   },
   {
     path: '/about',
@@ -18,6 +46,22 @@ const routes: Array<RouteRecordRaw> = [
       title: '关于'
     },
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+  },
+  {
+    path: '/table',
+    name: 'table',
+    meta: {
+      title: '表格'
+    },
+    component: () => import(/* webpackChunkName: "about" */ '../views/Table.vue')
+  },
+  {
+    path: '/echart',
+    name: 'echart',
+    meta: {
+      title: '环表'
+    },
+    component: () => import(/* webpackChunkName: "echart" */ '../views/Echart.vue')
   },
   {
     path: '/:pathMatch(.*)*',
