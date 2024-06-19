@@ -23,4 +23,8 @@
     { prop: 'operate', dataIndex: 'operate', label: '操作', slotName: 'operate' }
   ]
 </script>
-<style lang="less" scoped></style>
+<style lang="scss" scoped>
+  .layout {
+    padding: 20px;
+  }
+</style>
