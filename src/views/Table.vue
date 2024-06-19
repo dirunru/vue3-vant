@@ -5,10 +5,16 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue'
   import STable from '@/components/STable.vue'
   // 已选缺陷列表
-  const tableData = ref([])
+  const tableData = ref([
+    {
+      date: '2016-05-03',
+      name: 'Tom',
+      age: 10,
+      address: 'No. 189, Grove St, Los Angeles'
+    }
+  ])
   const tableConfig = [
     { prop: 'name', dataIndex: 'name', label: '姓名' },
     { prop: 'age', dataIndex: 'age', label: '年龄' },

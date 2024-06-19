@@ -2,21 +2,15 @@
 
 ## Project setup
 ```
-npm install
+创建 Vite + Vue 3 项目：
+create-vite vite-vue3-project
+cd my-vue3-project
+npm install axios lodash element-plus
+
+vue3项目配置按需自动引入自定义组件：
+npm install -D unplugin-vue-components unplugin-auto-import
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ```
 vue3-vant

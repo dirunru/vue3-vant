@@ -21,7 +21,7 @@
         <div class="title">圆环图</div>
       </div>
       <div class="echart-content">
-        
+        <el-button type="primary">Primary</el-button>
       </div>
     </div>
   </div>

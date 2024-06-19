@@ -1,6 +1,8 @@
 const { defineConfig } = require('@vue/cli-service')
 const path = require('path')
-const vue = require('vue')
+const AutoImport = require('unplugin-auto-import/webpack')
+const Components = require('unplugin-vue-components/webpack')
+const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
 const resolve = dir => {
   return path.join(__dirname, dir)
 }
@@ -9,6 +11,8 @@ module.exports = defineConfig({
   assetsDir: 'static',
   productionSourceMap: false,
   chainWebpack: config => {
+    config.resolve.symlinks(true) // 修复热更新失效
+    config.resolve.alias.set('vue-i18n', 'vue-i18n/dist/vue-i18n.cjs.js') // 去除国际化警告
     config.plugin('define').tap(definitions => {
       Object.assign(definitions[0], {
         __VUE_OPTIONS_API__: 'true',
@@ -32,6 +36,31 @@ module.exports = defineConfig({
         maxAssetSize: 30000000
       }
     }
+    const plugins = [
+      // AutoImport({
+      //   imports: ['vue', 'vue-router', 'pinia'],
+      //   dts: './auto-import.d.ts' // 生成 `auto-import.d.ts` 全局声明（ts项目添加上）
+      // }),
+      require('unplugin-auto-import/webpack')({
+        imports: ['vue', 'vue-router', 'pinia'], // 自动导入vue和vue-router相关函数
+        dts: './auto-import.d.ts', // 生成 `auto-import.d.ts` 全局声明（ts项目添加上）
+        eslintrc: {
+          globalsPropValue: true
+        }
+      }),
+      // 自动导入
+      AutoImport({
+        resolvers: [ElementPlusResolver()],
+        dts: 'typings/auto-imports-element-plus.d.ts'
+      }),
+      // 自动注册组件
+      Components({
+        resolvers: [ElementPlusResolver()],
+        dirs: ['src/components', 'src/views'],
+        dts: 'typings/auto-components-element-plus.d.ts'
+      })
+    ]
+    config.plugins = [...config.plugins, ...plugins]
   },
   devServer: {
     host: 'localhost',
