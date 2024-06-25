@@ -7,7 +7,7 @@ import { Button, Toast, Empty, NavBar, Image, Icon, Sidebar, SidebarItem, Swipe,
 
 import './assets/less/index.less'
 import "./assets/scss/test.scss"
-// 要覆盖的主题样式: 写了这个config里面就可以不写了
+// 要覆盖的主题样式: 写了这个config里面就可以不写了，目前是写了config
 // import "./assets/scss/element_theme.scss"
 
 const app = createApp(App)

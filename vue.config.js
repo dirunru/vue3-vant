@@ -62,13 +62,13 @@ module.exports = defineConfig({
     ]
     config.plugins = [...config.plugins, ...plugins]
   },
-  // css: {
-  //   loaderOptions: {
-  //     scss: {
-  //       additionalData: `@import "@/assets/scss/element_theme.scss";`
-  //     }
-  //   }
-  // },
+  css: {
+    loaderOptions: {
+      scss: {
+        additionalData: `@import "@/assets/scss/element_theme.scss";`
+      }
+    }
+  },
   devServer: {
     host: 'localhost',
     port: 3000 // 启动端口号
