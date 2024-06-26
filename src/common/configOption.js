@@ -1,4 +1,74 @@
 import * as echarts from 'echarts'
+const initEchart = () => {
+  let color = ['#00F6FF', '#007CFF']
+  let initOption = {
+    color: color,
+    grid: {
+      icon: 'roundRect',
+      right: '7%',
+      left: '15%',
+      top: '30%',
+      bottom: '15%'
+    },
+    tooltip: {
+      trigger: 'axis',
+      backgroundColor: 'rgba(10, 65, 132, 0.5)',
+      borderColor: 'rgba(10, 65, 132, 0.5)',
+      textStyle: {
+        color: '#fff',
+        fontSize: 12
+      },
+      axisPointer: {
+        type: 'shadow'
+      }
+    },
+    legend: {
+      textStyle: {
+        color: color
+      },
+      icon: 'roundRect',
+      align: 'auto',
+      right: '7%',
+      top: '15%',
+      itemWidth: 14,
+      selectedMode: false
+    },
+    xAxis: {
+      type: 'category',
+      boundaryGap: true,
+      axisPointer: {
+        type: 'shadow'
+      },
+      nameTextStyle: {
+        color: '#333'
+      },
+      axisLabel: {
+        formatter: '{value}'
+      },
+      axisLabel: {
+        color: '#333',
+        fontSize: 10,
+        rotate: 20
+      }
+    },
+    yAxis: [
+      {
+        type: 'value',
+        name: '%',
+        axisLabel: {
+          formatter: '{value}'
+        },
+        splitLine: {
+          show: true,
+          lineStyle: {
+            type: 'dashed',
+            color: 'rgba(163, 163, 163, 0.2)'
+          }
+        }
+      }
+    ]
+  }
+}
 export const doubleBarOption = {
   addOption(config) {
     const option = {
@@ -98,11 +168,6 @@ export const doubleBarOption = {
         {
           name: config.title[0] || '11',
           type: 'bar',
-          tooltip: {
-            valueFormatter: function (value) {
-              return value
-            }
-          },
           barWidth: 12,
           data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
           itemStyle: {
@@ -121,11 +186,6 @@ export const doubleBarOption = {
         {
           name: config.title[1] || '21',
           type: 'bar',
-          tooltip: {
-            valueFormatter: function (value) {
-              return value
-            }
-          },
           data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
           barWidth: 12,
           itemStyle: {
@@ -682,9 +742,17 @@ export const rateBarOption = {
     //   '完检':config.color[2][0]
     // }
     let result = [
-      { name: '自检', value: 10 },
-      { name: '线检', value: 20 },
-      { name: '完检', value: 30 }
+      {
+        name: '自检',
+        value: 10,
+        symbol: 'image://' + new URL(`../../public/img/zj.png`, import.meta.url).href
+      },
+      {
+        name: '线检',
+        value: 20,
+        symbol: 'image://' + new URL(`../../public/img/xj.png`, import.meta.url).href
+      },
+      { name: '完检', value: 30, symbol: 'image://' + new URL(`../../public/img/wj.png`, import.meta.url).href }
     ]
     let option = {
       // color: colorList,
