@@ -8,7 +8,7 @@
             :title="it.title"
             :key="it.id"
             :class="['part-item', active === it.id ? 'active' : '']"
-            @click="handleComponent(it.id)"
+            @click="handleComponent(it)"
           >
             {{ it.title }}
           </div>
@@ -19,8 +19,9 @@
 </template>
 
 <script setup>
-  import { ref, reactive, defineProps, onMounted } from 'vue'
+  import { ref, reactive, onMounted, watch } from 'vue'
   import { chunk } from 'lodash-es'
+  const emit = defineEmits(['clickTag']);
   const props = defineProps({
     list: {
       type: Array,
@@ -29,17 +30,26 @@
     page: {
       type: Object,
       default: () => {}
+    },
+    selected:{
+      type: String,
+      default: ''
     }
   })
   const tagList = ref([])
   onMounted(() => {
-    console.log('props.list.value', props.list)
     tagList.value = chunk(props.list, props.page.line * 4)
   });
+
   const active = ref('')
   const handleComponent = e => {
-    active.value = e
+    active.value = e.id
+    emit('clickTag', e)
   }
+  watch(()=>props.selected, (newVal)=>{
+    console.log('newVal', newVal)
+    active.value = newVal
+  })
 </script>
 <style lang="scss" scoped>
   .swipe-tag {

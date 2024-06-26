@@ -1,5 +1,5 @@
 <template>
-  <div ref="echartsRef" :style="{ width, height }"></div>
+  <div class="echart-container" ref="echartsRef" :style="{ width, height }"></div>
 </template>
 
 <script>
@@ -15,11 +15,11 @@
       },
       width: {
         type: String,
-        default: '600px'
+        default: '100%'
       },
       height: {
         type: String,
-        default: '400px'
+        default: '100%'
       }
     },
     setup(props) {
@@ -55,3 +55,27 @@
     }
   }
 </script>
+
+<style lang="less">
+  .echart-container {
+    ::v-deep div:nth-of-type(1) {
+      width: 100% !important;
+      height: 100% !important;
+
+      canvas {
+        width: 100% !important;
+        height: 100% !important;
+      }
+    }
+    ::v-deep div:nth-of-type(2) {
+      font-size: 12px !important;
+      pointer-events: auto !important;
+      div {
+        font-size: 12px !important;
+      }
+      span {
+        font-size: 12px !important;
+      }
+    }
+  }
+</style>

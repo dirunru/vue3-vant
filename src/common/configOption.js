@@ -216,7 +216,7 @@ export const levelBarOption = {
             fontWeight: 500,
             align: 'center',
             fontSize: 14,
-            color: '#ffffff',
+            color: '#333',
             formatter: function (params) {
               return params.data
             }
@@ -240,7 +240,7 @@ export const levelBarOption = {
               ]
             }
           },
-          data: [0, 0, 0, 0, 0, 0, 0]
+          data: [10, 20, 30, 40, 50, 60, 70]
         },
         {
           name: 'D',
@@ -257,14 +257,14 @@ export const levelBarOption = {
             offset: [0, -10], // 将标签上移20个像素
             fontWeight: 500,
             align: 'center',
-            color: '#ffffff',
+            color: '#333',
             fontSize: 14,
             formatter: function (params) {
               return params.data
             }
           },
           barMaxWidth: 12,
-          data: [0, 0, 0, 0, 0, 0, 0],
+          data: [70, 60, 50, 40, 30, 20, 10],
           itemStyle: {
             borderRadius: [0, 10, 10, 0], // 设置四个圆角的半径，顺序为左上、右上、右下、左下
             color: {
@@ -459,8 +459,8 @@ export const rankingBarOption = {
         show: false
       },
       grid: {
-        left: '15%',
-        right: '15%',
+        left: '20%',
+        right: '20%',
         top: '10%',
         bottom: '10%'
       },
