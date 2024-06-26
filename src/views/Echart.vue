@@ -1,111 +1,140 @@
 <template>
   <div class="echart-list layout">
-    <van-swipe :loop="false" class="part-box">
-      <van-swipe-item v-for="(item, idx) in list" :key="idx">
-        <div class="part-list">
-          <div
-            v-for="(it, index) in item"
-            :title="it.title"
-            :key="idx + '-' + index"
-            :class="['part-item', active === idx + '-' + index ? 'active' : '']"
-            @click="handleComponent(idx + '-' + index)"
-          >
-            {{ it.title }}
-          </div>
-        </div>
-      </van-swipe-item>
-    </van-swipe>
-    <div class="echart-box">
+    <swipe-tag
+      :list="list"
+      :page="{
+        line: 3
+      }"
+    />
+    <div class="echart-box top5">
       <div class="echart-title">
         <div class="line"></div>
-        <div class="title">圆环图</div>
+        <div class="title">top5</div>
       </div>
-      <div class="echart-content">
+      <div class="echart-content box-middle">
         <s-echart width="100%" height="100%" ref="visitChartRef" :option="top5Option"></s-echart>
+      </div>
+    </div>
+    <div class="echart-box circle">
+      <div class="echart-title">
+        <div class="line"></div>
+        <div class="title">合格率</div>
+      </div>
+      <div class="echart-content box">
+        <s-echart width="100%" height="100%" ref="visitChartRef" :option="circleChartOption"></s-echart>
+      </div>
+    </div>
+    <div class="echart-box rate">
+      <div class="echart-title">
+        <div class="line"></div>
+        <div class="title">百分比</div>
+      </div>
+      <div class="echart-content box">
+        <s-echart width="100%" height="100%" ref="visitChartRef" :option="rateOption"></s-echart>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
-import { chunk } from 'lodash-es'
-import SEchart from '@/components/SEchart.vue'
-import { doubleBarOption, doubleLineOption, levelBarOption, rankingBarOption, rateBarOption } from '@/common/configOption'
-const top5Option = reactive({
-  ...rankingBarOption.addOption({
-    color: ['#FE1516', '#FF7619', '#FFFA39', '#8CF4F7', '#8CF4F7']
+  import { ref, reactive } from 'vue'
+  import SEchart from '@/components/SEchart.vue'
+  import useEcharts from '@/hooks/use-echarts.js'
+  import SwipeTag from '@/components/SwipeTag.vue'
+  import {
+    doubleBarOption,
+    doubleLineOption,
+    levelBarOption,
+    rankingBarOption,
+    rateBarOption
+  } from '@/common/configOption'
+  const top5Option = reactive({
+    ...rankingBarOption.addOption({
+      color: ['#FE1516', '#FF7619', '#FFFA39', '#8CF4F7', '#8CF4F7']
+    })
   })
-})
-const list = chunk(new Array(50).fill({ title: '测试' }), 16)
-console.log(list)
-const active = ref('')
-const handleComponent = e => {
-  active.value = e
-}
+  // rateBarOption
+  const rateColorList = [
+    ['#1B7EF2', 'rgba(27, 126, 242, 0)'],
+    ['#29F1FA', 'rgba(41, 241, 250, 0)'],
+    ['#FFC42C', 'rgba(255, 196, 44, 0)']
+  ]
+  const rateOption = reactive({
+    ...rateBarOption.addOption({
+      color: rateColorList
+    })
+  })
+
+  const preData = reactive({
+    data: [
+      { value: 2, name: 'Email' },
+      { value: 3, name: 'Union Ads' },
+      { value: 5, name: 'Video Ads' }
+    ],
+    color: ['#FFD550', '#FF9B52', '#FF4C4A']
+  })
+
+  const cardData = reactive({
+    effectList: [],
+    shortcutList: []
+  })
+  // echarts表的相关数据
+  const { circleOption } = useEcharts()
+  const circleChartOption = circleOption(preData.data, preData.color)
+
+  const list = [
+    {
+      id: 'top5',
+      title: 'top5'
+    },
+    {
+      id: 'circle',
+      title: '合格率'
+    },
+    {
+      id: 'rank',
+      title: '排名'
+    }
+  ]
 </script>
 <style lang="less" scoped>
-.echart-list {
-  padding: var(--cp-margin);
-  .part-box {
-    background-color: var(--cp-bg-color-white);
-    border-radius: var(--cp-radius);
-    :deep(.van-swipe__track) {
-      height: 160px;
-    }
-    .part {
-      &-list {
-        padding: var(--cp-margin);
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 8px 5px;
-        .part-item {
-          display: inline-block;
-          font-size: 12px;
-          padding: 4px 12px;
-          border-radius: var(--cp-radius);
-          background: #f7f9fa;
-          text-align: center;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          border: solid 1px transparent;
-          transition-duration: 0.5;
+  .echart-list {
+    padding: var(--cp-margin);
+
+    .echart-box {
+      margin-top: var(--cp-margin);
+      .echart-title {
+        display: flex;
+        justify-content: center;
+        height: 32px;
+        line-height: 32px;
+        .line {
+          width: 3px;
+          height: 16px;
+          margin-top: 8px;
+          background: linear-gradient(140deg, #ffb054 7.43%, #f2632d 80.31%);
         }
-        .active {
-          border: solid 1px #ff7a44;
-          background: #fff2ea;
-          color: #ff7a44;
+        .title {
+          width: calc(100% - 16px);
+          text-align: left;
+          margin-left: 8px;
+          font-size: var(--cp-font-size-middle);
         }
+      }
+      .echart-content {
+        width: 100%;
+        border-radius: var(--cp-radius);
+        background-color: var(--cp-bg-color-white);
+      }
+      .box {
+        height: 200px;
+      }
+      .box-middle {
+        height: 300px;
+      }
+      .box-big {
+        height: 400px;
       }
     }
   }
-  .echart-box {
-    margin-top: var(--cp-margin);
-    .echart-title {
-      display: flex;
-      justify-content: center;
-      height: 32px;
-      line-height: 32px;
-      .line {
-        width: 3px;
-        height: 16px;
-        margin-top: 8px;
-        background: linear-gradient(140deg, #ffb054 7.43%, #f2632d 80.31%);
-      }
-      .title {
-        width: calc(100% - 16px);
-        text-align: left;
-        margin-left: 8px;
-        font-size: var(--cp-font-size-middle);
-      }
-    }
-    .echart-content {
-      height: 200px;
-      width: 100%;
-      border-radius: var(--cp-radius);
-      background-color: var(--cp-bg-color-white);
-    }
-  }
-}
 </style>

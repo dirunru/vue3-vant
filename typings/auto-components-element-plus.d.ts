@@ -19,6 +19,7 @@ declare module 'vue' {
     RouterView: typeof import('vue-router')['RouterView']
     SEchart: typeof import('./../src/components/SEchart.vue')['default']
     STable: typeof import('./../src/components/STable.vue')['default']
+    SwipeTag: typeof import('./../src/components/SwipeTag.vue')['default']
     Table: typeof import('./../src/views/Table.vue')['default']
   }
 }
