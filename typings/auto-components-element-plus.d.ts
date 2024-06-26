@@ -10,7 +10,6 @@ declare module 'vue' {
     AboutView: typeof import('./../src/views/AboutView.vue')['default']
     BlackLayout: typeof import('./../src/views/layout/BlackLayout.vue')['default']
     Echart: typeof import('./../src/views/Echart.vue')['default']
-    ElButton: typeof import('element-plus/es')['ElButton']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     HomeView: typeof import('./../src/views/HomeView.vue')['default']
@@ -18,6 +17,7 @@ declare module 'vue' {
     NotFoundView: typeof import('./../src/views/NotFoundView.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SEchart: typeof import('./../src/components/SEchart.vue')['default']
     STable: typeof import('./../src/components/STable.vue')['default']
     Table: typeof import('./../src/views/Table.vue')['default']
   }
