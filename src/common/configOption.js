@@ -1,5 +1,5 @@
 import * as echarts from 'echarts'
-const initEchart = () => {
+const initEchart = (option = {}) => {
   let color = ['#00F6FF', '#007CFF']
   let initOption = {
     color: color,
@@ -68,6 +68,12 @@ const initEchart = () => {
       }
     ]
   }
+  let obj = {}
+  Object.keys(initOption).map(key => {
+    obj[key] = Object.assign({}, initOption[key], option[key])
+  })
+  console.log('obj', obj)
+  return obj
 }
 export const doubleBarOption = {
   addOption(config) {
