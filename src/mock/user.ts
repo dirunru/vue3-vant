@@ -34,7 +34,7 @@ Mock.mock('/mock/banner', 'post', (option: any) => {
 })
 Mock.mock('/mock/fruits', 'post', (option: any) => {
   let dataList  =  Mock.mock({
-    'fruit|1-10': [{ 'name': () => Mock.Random.pick(['苹果', '香蕉', '橙子', '葡萄', '樱桃', '樱桃']), code: '@guid' }]
+    'fruit|3': [{ 'name': () => Mock.Random.pick(['苹果', '香蕉', '橙子', '葡萄', '樱桃', '樱桃']), code: '@guid' }]
   })
   return {
     code: 200,

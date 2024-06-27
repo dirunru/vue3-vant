@@ -10,8 +10,12 @@
   const initData = () => {
     selectStore.getDic('fruits').then(res => {
       options.value = res
-      console.log('res', res)
     })
+    setTimeout(()=>{
+      selectStore.getDic('fruits').then(res => {
+        options.value = res
+      })
+    }, 1000)
   }
   initData()
 </script>
