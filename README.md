@@ -1,6 +1,7 @@
 # vue3-vant
 
 ## Project setup
+
 ```
 创建 Vite + Vue 3 项目：
 create-vite vite-vue3-project
@@ -11,6 +12,27 @@ vue3项目配置按需自动引入自定义组件：
 npm install -D unplugin-vue-components unplugin-auto-import
 ```
 
+插件安装
+
+```
+axios
+echarts
+less
+less-loader
+lodash-es
+mockjs
+node-sass
+postcss
+postcss-px-to-viewport
+prettier
+sass
+sass-loader
+typescript
+unplugin-auto-import
+unplugin-element-plus
+unplugin-vue-components
+vue-echart
+```
 
 ```
 vue3-vant

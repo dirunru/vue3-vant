@@ -6,7 +6,7 @@
 
 <script setup>
   import { ref } from 'vue'
-
+  import { reqGetBannerList } from '@/api'
   import STable from '@/components/STable.vue'
   // 已选缺陷列表
   const tableData = ref([
@@ -22,6 +22,9 @@
     { prop: 'age', dataIndex: 'age', label: '年龄' },
     { prop: 'operate', dataIndex: 'operate', label: '操作', slotName: 'operate' }
   ]
+  const getList = reqGetBannerList().then((res) => {
+    console.log('res', res)
+  });
 </script>
 <style lang="scss" scoped>
   .layout {
