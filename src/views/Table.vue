@@ -22,9 +22,12 @@
     { prop: 'age', dataIndex: 'age', label: '年龄' },
     { prop: 'operate', dataIndex: 'operate', label: '操作', slotName: 'operate' }
   ]
-  const getList = reqGetBannerList().then((res) => {
+  const getList = reqGetBannerList({
+    pageIndex: 1,
+    pageSize: 20
+  }).then(res => {
     console.log('res', res)
-  });
+  })
 </script>
 <style lang="scss" scoped>
   .layout {
