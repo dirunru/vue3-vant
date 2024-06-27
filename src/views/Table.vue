@@ -26,7 +26,7 @@
     pageIndex: 1,
     pageSize: 20
   }).then(res => {
-    console.log('res', res)
+    console.log('res---table', res)
   })
 </script>
 <style lang="scss" scoped>

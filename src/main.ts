@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import { createPinia } from 'pinia'
 // 引入全局组件样式
 import 'vant/lib/index.css'
 import { Button, Toast, Empty, NavBar, Image, Icon, Sidebar, SidebarItem, Swipe, SwipeItem } from 'vant'
@@ -11,6 +12,8 @@ import "./assets/scss/test.scss"
 // import "./assets/scss/element_theme.scss"
 
 const app = createApp(App)
+const pinia = createPinia()
+app.use(pinia)
 // vant的样式
 app.use(Button)
   .use(Toast)

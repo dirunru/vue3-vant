@@ -64,6 +64,14 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "echart" */ '../views/Echart.vue')
   },
   {
+    path: '/form',
+    name: 'form',
+    meta: {
+      title: 'form表单'
+    },
+    component: () => import(/* webpackChunkName: "echart" */ '../views/Form.vue')
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'not-found',
     meta: {

@@ -1,3 +1,5 @@
+import { id } from "element-plus/es/locale"
+
 const Mock = require('mockjs')
 //1. “/api/vip/get2”  是需要拦截的请求路径 2. ‘post’ 方法， 3. {}是返回的自定义数据
 //  [mock文档](http://mockjs.com/examples.html#Array)
@@ -19,16 +21,24 @@ const Mock = require('mockjs')
 // }
 Mock.mock('/mock/banner', 'post', (option: any) => {
   let info = JSON.parse(option.body)
-  console.log('option', info)
   let dataList  =  Mock.mock({
     'list|10': [{
-      'raate|0-100': 1,
+      'rate|0-100': 1,
     }]
   })
-  console.log('dataList', dataList)
   return {
-    code: '200',
+    code: 200,
     message: 'success',
     data: dataList.list
+  }
+})
+Mock.mock('/mock/fruits', 'post', (option: any) => {
+  let dataList  =  Mock.mock({
+    'fruit|1-10': [{ 'name': () => Mock.Random.pick(['苹果', '香蕉', '橙子', '葡萄', '樱桃', '樱桃']), code: '@guid' }]
+  })
+  return {
+    code: 200,
+    message: 'success',
+    data: dataList.fruit
   }
 })

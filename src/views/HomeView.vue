@@ -46,6 +46,11 @@
           path: 'table'
         },
         {
+          title: 'form表单',
+          icon: 'cart-o',
+          path: 'form'
+        },
+        {
           title: '购物车',
           icon: 'cart-o',
           path: 'cart'

@@ -12,6 +12,7 @@ declare module 'vue' {
     Echart: typeof import('./../src/views/Echart.vue')['default']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
+    Form: typeof import('./../src/views/form.vue')['default']
     HomeView: typeof import('./../src/views/HomeView.vue')['default']
     NavLayout: typeof import('./../src/views/layout/NavLayout.vue')['default']
     NotFoundView: typeof import('./../src/views/NotFoundView.vue')['default']
