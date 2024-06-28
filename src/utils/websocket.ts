@@ -1,6 +1,6 @@
+import { useSelectStore } from '@/pinia/websocket'
 import { ElMessage } from 'element-plus'
-import store from '../pinia/websocket'
-
+const socketStore = useSelectStore()
 let websocket: WebSocket | null = null; // 用于存储实例化后websocket
 let rec: any; // 断线重连后，延迟5秒重新创建WebSocket连接  rec用来存储延迟请求的代码
 
@@ -31,14 +31,11 @@ function creatWebSocket(wsUrl: string) {
 function initWebSocket(wsUrl: string) {
   websocket = new WebSocket(wsUrl);
   console.log("websocket:", websocket);
-
-
   websocket.onopen = function () {
     websocketOpen();
   };
 
-
-  //   // 接收
+  // 接收
   websocket.onmessage = function (e: MessageEvent<any>) {
     websocketonmessage(e);
   };
@@ -62,7 +59,7 @@ function initWebSocket(wsUrl: string) {
 // 定义重连函数
 let reConnect = (wsUrl: string) => {
   console.log("尝试重新连接");
-  if (store.state.isConnected) return; // 如果已经连上就不在重连了
+  if (socketStore.isConnected) return; // 如果已经连上就不在重连了
   rec && clearTimeout(rec);
   rec = setTimeout(function () {
     // 延迟5秒重连  避免过多次过频繁请求重连
@@ -74,7 +71,7 @@ let reConnect = (wsUrl: string) => {
 // 创建连接
 function websocketOpen() {
   console.log("连接成功");
-  store.dispatch('connect'); // 修改连接状态
+  socketStore.connect(); // 修改连接状态
 }
 // 数据接收
 function websocketonmessage(e: MessageEvent<any>) {
@@ -133,7 +130,7 @@ function websocketonmessage(e: MessageEvent<any>) {
 // 关闭
 function websocketclose(e: any) {
   console.log(e);
-  store.dispatch('disconnect'); // 修改连接状态
+  socketStore.disconnect(); // 修改连接状态
   console.log("connection closed (" + e.code + ")");
 }
 
@@ -142,7 +139,7 @@ function websocketclose(e: any) {
 // 数据发送
 function websocketsend(data: any) {
   console.log("发送的数据", data, JSON.stringify(data));
-  if (websocket && store.state.isConnected) { // 检查连接状态
+  if (websocket && socketStore.isConnected) { // 检查连接状态
     websocket.send(JSON.stringify(data));
     
   } else {
@@ -160,7 +157,7 @@ function websocketsend(data: any) {
 // 发送
 function sendWebSocket(data: any) {
   // 如果未保持连接状态 不允许直接发送消息 提示请选择连接设备
-  if (!store.state.isConnected) {
+  if (!socketStore.isConnected) {
     ElMessage({
       showClose: true,
       message: "请选择设备连接",
@@ -171,7 +168,6 @@ function sendWebSocket(data: any) {
   } else {
     websocketsend(data);
     console.log("------------------");
-    
   }
 }
 
@@ -194,9 +190,4 @@ export {
   sendWebSocket,
   creatWebSocket,
   closeWebSocket,
-};
-————————————————
-
-                            版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。
-                        
-原文链接：https://blog.csdn.net/weixin_44096999/article/details/131204105
+}

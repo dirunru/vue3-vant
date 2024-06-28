@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-export const useSelectStore = defineStore('websocket', {
+export const useSelectStore  = defineStore('socketStore', {
   state:()=> {
     return {
       isConnected: false,//连接状态
