@@ -57,12 +57,20 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "echart" */ '../views/Echart.vue')
   },
   {
+    path: '/dicStore',
+    name: 'dicStore',
+    meta: {
+      title: '字典缓存'
+    },
+    component: () => import(/* webpackChunkName: "form" */ '../views/dicStore.vue')
+  },
+  {
     path: '/form',
     name: 'form',
     meta: {
-      title: 'form表单'
+      title: '表单封装'
     },
-    component: () => import(/* webpackChunkName: "form" */ '../views/Form.vue')
+    component: () => import(/* webpackChunkName: "form" */ '../views/form.vue')
   },
   {
     path: '/downLoad',

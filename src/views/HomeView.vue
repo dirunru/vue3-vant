@@ -51,6 +51,11 @@
           path: 'form'
         },
         {
+          title: 'dicStore',
+          icon: 'cart-o',
+          path: 'dicStore'
+        },
+        {
           title: '下载导入',
           icon: 'cart-o',
           path: 'downLoad'
