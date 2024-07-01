@@ -51,15 +51,26 @@
           path: 'form'
         },
         {
-          title: '购物车',
+          title: '下载导入',
           icon: 'cart-o',
-          path: 'cart'
+          path: 'downLoad'
         },
         {
           title: '嵌套路由',
           icon: 'cart-o',
           path: 'black'
         }
+      ]
+    },
+    {
+      type: 'layout',
+      title: '布局',
+      list: [
+        {
+          title: '子路由',
+          icon: 'home-o',
+          path: 'echart-2'
+        },
       ]
     },
     {

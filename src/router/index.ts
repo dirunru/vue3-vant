@@ -15,20 +15,13 @@ const routes: Array<RouteRecordRaw> = [
     component: HomeView
   },
   {
-    path: '/black',
-    name: 'black',
+    path: '/layout',
+    name: 'layout',
     meta: {
       title: '布局',
     },
     component: BlackLayout,
-    children:[{
-      path: 'about',
-      name: 'about-2',
-      meta: {
-        title: '关于'
-      },
-      component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-    },
+    children:[
     {
       path: 'echart',
       name: 'echart-2',
@@ -53,7 +46,7 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       title: '表格'
     },
-    component: () => import(/* webpackChunkName: "about" */ '../views/Table.vue')
+    component: () => import(/* webpackChunkName: "tabel" */ '../views/Table.vue')
   },
   {
     path: '/echart',
@@ -69,7 +62,15 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       title: 'form表单'
     },
-    component: () => import(/* webpackChunkName: "echart" */ '../views/Form.vue')
+    component: () => import(/* webpackChunkName: "form" */ '../views/Form.vue')
+  },
+  {
+    path: '/downLoad',
+    name: 'downLoad',
+    meta: {
+      title: '下载导入'
+    },
+    component: () => import(/* webpackChunkName: "downLoad" */ '../views/downLoad.vue')
   },
   {
     path: '/:pathMatch(.*)*',

@@ -4,7 +4,7 @@ import router from './router'
 import { createPinia } from 'pinia'
 // 引入全局组件样式
 import 'vant/lib/index.css'
-import { Button, Toast, Empty, NavBar, Image, Icon, Sidebar, SidebarItem, Swipe, SwipeItem } from 'vant'
+import { Button, Toast, Empty, NavBar, Image, Icon, Sidebar, SidebarItem, Swipe, SwipeItem, Space } from 'vant'
 
 import './assets/less/index.less'
 import "./assets/scss/test.scss"
@@ -24,6 +24,7 @@ app.use(Button)
   .use(Sidebar)
   .use(SidebarItem)
   .use(Swipe)
+  .use(Space)
   .use(SwipeItem)
 
 app.use(router)

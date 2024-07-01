@@ -18,11 +18,6 @@
   const active = ref(0)
   const menu_list = [
     {
-      title: '分类',
-      icon: 'apps-o',
-      path: 'about-2'
-    },
-    {
       title: '环状表',
       icon: 'cart-o',
       path: 'echart-2'

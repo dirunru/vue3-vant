@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     AboutView: typeof import('./../src/views/AboutView.vue')['default']
     BlackLayout: typeof import('./../src/views/layout/BlackLayout.vue')['default']
+    DownLoad: typeof import('./../src/views/downLoad.vue')['default']
     Echart: typeof import('./../src/views/Echart.vue')['default']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
@@ -22,5 +23,6 @@ declare module 'vue' {
     STable: typeof import('./../src/components/STable.vue')['default']
     SwipeTag: typeof import('./../src/components/SwipeTag.vue')['default']
     Table: typeof import('./../src/views/Table.vue')['default']
+    Websocket: typeof import('./../src/views/Websocket.vue')['default']
   }
 }
