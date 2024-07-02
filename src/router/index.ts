@@ -70,7 +70,7 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       title: '表单封装'
     },
-    component: () => import(/* webpackChunkName: "form" */ '../views/form.vue')
+    component: () => import(/* webpackChunkName: "form" */ '../views/Form.vue')
   },
   {
     path: '/downLoad',

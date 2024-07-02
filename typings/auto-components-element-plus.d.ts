@@ -29,7 +29,7 @@ declare module 'vue' {
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElTreeSelect: typeof import('element-plus/es')['ElTreeSelect']
-    Form: typeof import('./../src/views/form.vue')['default']
+    Form: typeof import('./../src/views/Form.vue')['default']
     HomeView: typeof import('./../src/views/HomeView.vue')['default']
     NavLayout: typeof import('./../src/views/layout/NavLayout.vue')['default']
     NotFoundView: typeof import('./../src/views/NotFoundView.vue')['default']
