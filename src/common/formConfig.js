@@ -13,7 +13,7 @@ const testCaseConfig = {
       field: 'sitFunctionName',
       prop: 'sitFunctionName',
       label: 'SIT功能',
-      placeholder: 'SIT功能',
+      placeholder: '请输入SIT功能',
       type: 'input',
       // size: 'small',
       maxlength: 10,
@@ -83,9 +83,12 @@ const testCaseConfig = {
       type: 'primary',
       size: 'default', //可以是default，small,large
       icon: 'Edit',
+      span: 12,
       // 按钮是否为朴素类型
       // plain: true,
-      onClick: null
+      onClick: function (value) {
+        console.log(value)
+      }
     },
     {
       name: '重置',
@@ -93,6 +96,7 @@ const testCaseConfig = {
       title: 'resetTestCase',
       size: 'default',
       icon: 'DocumentDelete',
+      span: 12,
       // plain: true,
       onClick: null
     },
@@ -103,6 +107,7 @@ const testCaseConfig = {
       size: 'default',
       icon: 'Download',
       isHidden: true,
+      span: 12,
       // plain: true,
       onClick: null
     }
