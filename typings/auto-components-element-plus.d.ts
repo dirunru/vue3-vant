@@ -39,8 +39,10 @@ declare module 'vue' {
     SEchart: typeof import('./../src/components/SEchart.vue')['default']
     SForm: typeof import('./../src/components/SForm.vue')['default']
     STable: typeof import('./../src/components/STable.vue')['default']
+    SUpload: typeof import('./../src/components/SUpload.vue')['default']
     SwipeTag: typeof import('./../src/components/SwipeTag.vue')['default']
     Table: typeof import('./../src/views/Table.vue')['default']
+    Upload: typeof import('./../src/views/Upload.vue')['default']
     Websocket: typeof import('./../src/views/Websocket.vue')['default']
   }
 }

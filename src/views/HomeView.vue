@@ -51,6 +51,11 @@
           path: 'form'
         },
         {
+          title: '上传图片视频',
+          icon: 'cart-o',
+          path: 'upload'
+        },
+        {
           title: 'dicStore',
           icon: 'cart-o',
           path: 'dicStore'
@@ -75,7 +80,7 @@
           title: '子路由',
           icon: 'home-o',
           path: 'echart-2'
-        },
+        }
       ]
     },
     {

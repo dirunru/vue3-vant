@@ -73,6 +73,14 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "form" */ '../views/Form.vue')
   },
   {
+    path: '/upload',
+    name: 'upload',
+    meta: {
+      title: '上传'
+    },
+    component: () => import(/* webpackChunkName: "form" */ '../views/Upload.vue')
+  },
+  {
     path: '/downLoad',
     name: 'downLoad',
     meta: {
