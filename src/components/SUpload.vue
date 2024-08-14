@@ -15,6 +15,7 @@
 
 <script setup>
   import { ref, defineProps, toValue } from 'vue'
+  import { showFailToast } from 'vant'
 
   const props = defineProps({
     // 上传地址
@@ -47,6 +48,11 @@
       type: Function,
       default: () => Function
     },
+    // 默认最大上传1MB
+    maxSize: {
+      type: Number,
+      default: 1024 * 1024 * 1
+    },
     onSuccess: {
       type: Function,
       default: () => Function
@@ -66,9 +72,33 @@
   }
   // 文件改变时
   const uploadFileChange = e => {
-    console.log('文件改变时')
+    console.log('文件改变时-------------', e)
+    const imgformat = /image\/(jpg|jpeg|png)$/
+    const videoformat = /video\/(mp4|mov|quicktime)$/
+    console.log('视频格式', e.target.files[0].type)
+    if (!(imgformat.test(e.target.files[0].type) || videoformat.test(e.target.files[0].type))) {
+      showFailToast('请上传 jpg/jpeg/png 格式图片或者 mp4/mov 格式视频')
+      return false
+    }
+    if (e.target.files[0].size > props.maxSize) {
+      showFailToast(`文件大小不能超过 ${formatSize(props.maxSize)}`)
+      return false
+    }
     file.value = e.target.files[0]
     uploadFile()
+  }
+
+  const formatSize = bytes => {
+    if (bytes < 1024) {
+      return bytes + 'B'
+    }
+    if (bytes < 1024 * 1024) {
+      return (bytes / 1024).toFixed(1) + 'KB'
+    }
+    if (bytes < 1024 * 1024 * 1024) {
+      return (bytes / (1024 * 1024)).toFixed(1) + 'MB'
+    }
+    return (bytes / (1024 * 1024 * 1024)).toFixed(1) + 'GB'
   }
   // 上传文件
   const uploadFile = () => {

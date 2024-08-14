@@ -5,6 +5,7 @@
       :action="'http://10.68.0.3:9900/api-file/files-minio'"
       :before-upload="beforeAvatarUpload"
       :accept="'image/*,video/*'"
+      :max-size="1024 * 1024 * 10"
       :on-success="uploadSuccess"
       :on-error="uploadError"
       :on-progress="onProgress"
@@ -21,11 +22,13 @@
         <label>已上传</label><span class="jindu">{{ percent }}%</span>
       </div>
     </div>
-    <template v-if="type == 'video'">
-      <video v-show="uploadbool" controls class="video" id="video" :src="videoUrl" crossorigin="anonymous"></video>
-    </template>
-    <template v-else>
-      <img :src="videoUrl" alt="" />
+    <template v-if="uploadbool">
+      <template v-if="type == 'video'">
+        <video controls class="video" id="video" :src="videoUrl" crossorigin="anonymous"></video>
+      </template>
+      <template v-else>
+        <img :src="videoUrl" alt="" />
+      </template>
     </template>
     <!-- autoplay:自动播放 loop：循环播放 -->
   </div>
