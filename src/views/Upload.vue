@@ -1,14 +1,14 @@
 <template>
-  <div>
+  <div class="s-upload">
     <s-upload
       :name="name"
-      :action="'http://admop.51vv.com/mpcms/space/test_big_fileUpload'"
+      :action="'http://10.68.0.3:9900/api-file/files-minio'"
       :before-upload="beforeAvatarUpload"
       :on-success="uploadSuccess"
       :on-error="uploadError"
       :on-progress="onProgress"
     >
-      <el-button class="upload-btn" size="small" type="success"> 原生上传 </el-button>
+      <img class="upload-img" src="@/assets/img/images/upload-img-video-icon.png" alt="" />
     </s-upload>
     <div v-show="uploadbool">
       <div>
@@ -20,15 +20,8 @@
         <label>已上传</label><span class="jindu">{{ percent }}%</span>
       </div>
     </div>
-    <video
-      v-show="uploadbool"
-      class="video"
-      id="video"
-      :src="videoUrl"
-      crossorigin="anonymous"
-      autoplay="autoplay"
-      loop="loop"
-    ></video>
+    <!-- autoplay:自动播放 loop：循环播放 -->
+    <video v-show="uploadbool" controls class="video" id="video" :src="videoUrl" crossorigin="anonymous"></video>
   </div>
 </template>
 
@@ -76,28 +69,31 @@
     return (bytes / (1024 * 1024 * 1024)).toFixed(1) + 'GB'
   }
 </script>
-<style>
-  label {
-    font-weight: bold;
-    font-size: 16px;
-  }
-  .upload-btn {
-    margin-top: 10px;
-  }
-  .jindu {
-    margin-left: 4px;
-    color: #4a90e2;
-    font-weight: bold;
-    font-size: 16px;
-  }
-  .video {
-    background: black;
-    width: 200px;
-    height: 100px;
-  }
-  .mb {
-    color: #999;
-    font-size: 15px;
-    margin: 0 20px 0 10px;
+<style lang="less" scoped>
+  .s-upload {
+    label {
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .upload-img {
+      width: 60px;
+      height: 60px;
+    }
+    .jindu {
+      margin-left: 4px;
+      color: #4a90e2;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .video {
+      background: black;
+      width: 200px;
+      height: 100px;
+    }
+    .mb {
+      color: #999;
+      font-size: 15px;
+      margin: 0 20px 0 10px;
+    }
   }
 </style>

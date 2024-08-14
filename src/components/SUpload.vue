@@ -1,8 +1,8 @@
 <template>
   <div @click="uploadClick">
     <input
-      :name="name"
-      :accept="accept"
+      :name="props.name"
+      :accept="props.accept"
       type="file"
       style="display: none"
       ref="uploadInput"
@@ -25,7 +25,7 @@
     // 上传文件名
     name: {
       type: String,
-      default: 'mFile'
+      default: 'file'
     },
     // 是否在选取文件后立即进行上传
     autoUpload: {
@@ -84,15 +84,19 @@
     const xhr = new XMLHttpRequest() // 1. 创建对象
     const form = new FormData() // 创建一个空表单数据对象
     form.append(props.name, file.value)
+    form.append('bucket', 'mom/proposal')
     xhr.open('POST', props.action, true) // 2. 与服务器建立连接
+    let token =
+      '4WP_rTGTnd1Ck2R2MoQiiRT2HUDwQ76aneCSLn2SflYlRefhxHvuggHfnYmx4-t9KUOOP2nUl6Ronxc-ipiiHkO3Q8QgBIOuH9spHSZhWTjHFsDUF5vC_nGa_9TMoVKN'
+    xhr.setRequestHeader('Authorization', 'Bearer ' + token)
     xhr.upload.onprogress = e => {
       // 监听文件传输进度
       props.onProgress && props.onProgress(e)
     }
     xhr.onload = e => {
       // 监听文件传输进度
-      console.log('上传onload')
-      if (e.target.readyState && e.target.status) {
+      console.log('上传onload', e)
+      if (e.target.readyState === 4 && e.target.status === 200) {
         //4 && 200
         props.onSuccess && props.onSuccess(JSON.parse(e.target.response), file.value)
       }
@@ -100,6 +104,7 @@
     xhr.onerror = error => {
       props.onError && props.onError(error, file.value)
     }
+    console.log('form', form)
     xhr.send(form) // 3. 发送请求;
   }
 </script>
