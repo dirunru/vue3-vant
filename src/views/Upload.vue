@@ -13,8 +13,8 @@
     <div v-show="uploadbool">
       <div>
         <label>文件名：</label>
-        {{ file.name ? file.name : '' }}
-        <span class="mb">{{ file.size ? formatSize(file.size) : '0b' }}</span>
+        {{ file?.name ? file.name : '' }}
+        <span class="mb">{{ file?.size ? formatSize(file.size) : '0b' }}</span>
       </div>
       <div>
         <label>已上传</label><span class="jindu">{{ percent }}%</span>
@@ -30,13 +30,14 @@
   import { ref } from 'vue'
   const percent = ref(0) // 进度
   const videoUrl = ref('')
-  const file = ref({})
+  const file = ref(null)
+  const name = 'file'
   const uploadbool = ref(false)
-  const beforeAvatarUpload = file => {
-    console.log('上传之前', file)
+  const beforeAvatarUpload = val => {
+    console.log('file----------------', val)
     //我们可以通过file里的信息上传前判断文件的大小、格式、时长
-    file.value = file
-    videoUrl.value = getFullPath(file)
+    file.value = val
+    videoUrl.value = getFullPath(val)
     uploadbool.value = true
     return true
   }
@@ -57,6 +58,7 @@
   }
 
   const formatSize = bytes => {
+    console.log('bytes------------------', bytes)
     if (bytes < 1024) {
       return bytes + 'B'
     }

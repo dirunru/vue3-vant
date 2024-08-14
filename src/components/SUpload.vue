@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-  import { ref, defineProps } from 'vue'
+  import { ref, defineProps, toValue } from 'vue'
 
   const props = defineProps({
     // 上传地址
@@ -73,7 +73,7 @@
   // 上传文件
   const uploadFile = () => {
     let beforeUploadbool = true
-    beforeUploadbool = props.beforeUpload && props.beforeUpload(file.value)
+    beforeUploadbool = props.beforeUpload && props.beforeUpload(toValue(file))
     // beforeUpload返回的值。 beforeUploadbool为false,终止上传
     if (!beforeUploadbool) {
       return
