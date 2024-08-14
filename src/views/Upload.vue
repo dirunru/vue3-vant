@@ -4,6 +4,7 @@
       :name="name"
       :action="'http://10.68.0.3:9900/api-file/files-minio'"
       :before-upload="beforeAvatarUpload"
+      :accept="'image/*,video/*'"
       :on-success="uploadSuccess"
       :on-error="uploadError"
       :on-progress="onProgress"
@@ -20,8 +21,13 @@
         <label>已上传</label><span class="jindu">{{ percent }}%</span>
       </div>
     </div>
+    <template v-if="type == 'video'">
+      <video v-show="uploadbool" controls class="video" id="video" :src="videoUrl" crossorigin="anonymous"></video>
+    </template>
+    <template v-else>
+      <img :src="videoUrl" alt="" />
+    </template>
     <!-- autoplay:自动播放 loop：循环播放 -->
-    <video v-show="uploadbool" controls class="video" id="video" :src="videoUrl" crossorigin="anonymous"></video>
   </div>
 </template>
 
@@ -45,7 +51,9 @@
     //e.loaded 已上传的，e.total总共
     percent.value = parseInt((e.loaded / e.total).toFixed(2) * 100)
   }
+  const type = ref(false)
   const uploadSuccess = (res, file) => {
+    type.value = file.type.indexOf('image') > -1 ? 'image' : 'video'
     console.log('上传成功', res, file)
   }
   const uploadError = (err, file) => {
@@ -58,7 +66,6 @@
   }
 
   const formatSize = bytes => {
-    console.log('bytes------------------', bytes)
     if (bytes < 1024) {
       return bytes + 'B'
     }
@@ -80,6 +87,10 @@
     .upload-img {
       width: 60px;
       height: 60px;
+    }
+    img {
+      width: 200px;
+      height: 100px;
     }
     .jindu {
       margin-left: 4px;

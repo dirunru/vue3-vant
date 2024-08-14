@@ -35,7 +35,7 @@
     // 文件上传的类型
     accept: {
       type: String,
-      default: ''
+      default: 'video/*' // image/*
     },
     // 上传文件前
     beforeUpload: {
