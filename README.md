@@ -74,3 +74,19 @@ vue3-vant
 └─ vue.config.js
 
 ```
+
+```
+ vue3 全局loading加载的情况：
+ 1、首次打开页面时 loading：通过根目录 index.html文件，在 <div id='app'> 里添加内容，就是过度内容，当vue实例创建完成，通过.mount() 方法挂载到 id='app' 的div 里，会替换掉里的loading内容；
+ 2、路由切换时、异步组件 loading
+    路由切换过度 可以使用vue3 的内置组件 <Suspense>；
+    <Suspense> 提供 2 个插槽 👇；
+    #default : 一个要加载的内容 ；
+    #fallback: 一个加载中显示的内容；
+    <template #default>
+      <router-view />
+    </template>
+    <template #fallback>
+      <h1>加载中......</h1>
+    </template>
+```
