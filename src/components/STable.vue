@@ -1,3 +1,4 @@
+<!-- 简单表格 -->
 <template>
   <div class="s-table">
     <el-table
@@ -42,6 +43,30 @@
     tableColConfig: {
       type: Array,
       default: () => []
+    },
+    objectSpanMethod: {
+      type: Function,
+      require: true,
+      default: ({ row, column, rowIndex, columnIndex }) => {
+        if (row.flag_ === 'total') {
+          if (columnIndex === 0) {
+            return {
+              rowspan: 1,
+              colspan: 2
+            };
+          } else if (columnIndex === 1) {
+            return {
+              rowspan: 0,
+              colspan: 0
+            };
+          }
+        }
+      }
+    },
+    tableMaxHeight: {
+      type: String,
+      require: true,
+      default: `calc(100vh - 90px)`
     },
     // 是否显示边框
     border: {

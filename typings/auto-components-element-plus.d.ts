@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     AboutView: typeof import('./../src/views/AboutView.vue')['default']
     BlackLayout: typeof import('./../src/views/layout/BlackLayout.vue')['default']
+    ComplexTable: typeof import('./../src/views/ComplexTable.vue')['default']
     DicStore: typeof import('./../src/views/dicStore.vue')['default']
     DownLoad: typeof import('./../src/views/downLoad.vue')['default']
     Echart: typeof import('./../src/views/Echart.vue')['default']
@@ -36,6 +37,7 @@ declare module 'vue' {
     NotFoundView: typeof import('./../src/views/NotFoundView.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SComplexTable: typeof import('./../src/components/SComplexTable.vue')['default']
     SEchart: typeof import('./../src/components/SEchart.vue')['default']
     SForm: typeof import('./../src/components/SForm.vue')['default']
     STable: typeof import('./../src/components/STable.vue')['default']

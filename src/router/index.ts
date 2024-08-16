@@ -81,6 +81,14 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "form" */ '../views/Upload.vue')
   },
   {
+    path: '/complexTable',
+    name: 'complexTable',
+    meta: {
+      title: '上传'
+    },
+    component: () => import(/* webpackChunkName: "form" */ '../views/ComplexTable.vue')
+  },
+  {
     path: '/downLoad',
     name: 'downLoad',
     meta: {

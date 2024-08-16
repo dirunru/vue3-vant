@@ -23,8 +23,8 @@
 </template>
 
 <script setup>
-  import { useRoute, useRouter } from 'vue-router'
-  const { push } = useRouter()
+  import { useRoute, useRouter } from 'vue-router';
+  const { push } = useRouter();
   const menu_list = [
     {
       type: 'function',
@@ -44,6 +44,11 @@
           title: '表格',
           icon: 'cart-o',
           path: 'table'
+        },
+        {
+          title: '复杂表格',
+          icon: 'cart-o',
+          path: 'complexTable'
         },
         {
           title: 'form表单',
@@ -104,13 +109,13 @@
         }
       ]
     }
-  ]
-  const goIn = row => {
-    console.log(row)
+  ];
+  const goIn = (row) => {
+    console.log(row);
     push({
       name: row.path
-    })
-  }
+    });
+  };
 </script>
 
 <style lang="less" scoped>
