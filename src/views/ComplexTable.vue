@@ -173,6 +173,23 @@
       } else return '';
     } else return '';
   };
+
+  // 列合并
+  // const objectSpanMethod = ({ row, column, rowIndex, columnIndex }) => {
+  //   let key = ''; // 需要合并的key
+  //   let spanArr = utils.getSpanArr([], key);
+  //   // console.log("spanArr", spanArr);
+  //   if (columnIndex === 0) {
+  //     const _row = spanArr[rowIndex];
+  //     const _col = _row > 0 ? 1 : 0;
+  //     // console.log("_row", _row);
+  //     // console.log("_col", _col);
+  //     return {
+  //       rowspan: _row,
+  //       colspan: _col
+  //     };
+  //   }
+  // };
 </script>
 <style lang="scss" scoped>
   .layout {

@@ -17,3 +17,31 @@ export const batchImportPictures = () =>{
     imageArr.push(value)
   }
 }
+
+  // 处理列合并的数组
+  export const getSpanArr = (data:[], key:string) => {
+    // console.log("data", data);
+    let spanArr = [];
+    let pos = 0;
+    for (let i = 0; i < data.length; i++) {
+      if (i === 0) {
+        spanArr.push(1);
+        pos = 0;
+      } else {
+        // 判断当前元素与上一个元素是否相同
+        if (data[i][key] === data[i - 1][key]) {
+          // 如果相同就将索引为 pos 的值加一
+          spanArr[pos] += 1;
+          // 且将数组添加 0
+          spanArr.push(0);
+        } else {
+          // 如果元素不同了，就可以通过索引为 pos 的值知晓应该需要合并的行数
+          // 同时，我们再次添加一个值1，表示重新开始判断重复姓名的次数
+          spanArr.push(1);
+          // 同时 索引加一
+          pos = i;
+        }
+      }
+    }
+    return spanArr;
+  };
