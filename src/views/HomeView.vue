@@ -51,6 +51,11 @@
           path: 'complexTable'
         },
         {
+          title: '合并表格',
+          icon: 'cart-o',
+          path: 'tableSpan'
+        },
+        {
           title: 'form表单',
           icon: 'cart-o',
           path: 'form'

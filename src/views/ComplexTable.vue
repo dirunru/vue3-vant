@@ -33,15 +33,8 @@
   import { table } from '@/api/table';
   import STable from '@/components/SComplexTable.vue';
   import { findListData } from '@/api/table';
-  // 已选缺陷列表
-  const tableData = ref([
-    {
-      date: '2016-05-03',
-      name: 'Tom',
-      age: 10,
-      address: 'No. 189, Grove St, Los Angeles'
-    }
-  ]);
+
+  const tableData = ref([]);
   const tableConfig = ref([]);
   const tableTotalData = ref({});
   const tableHeaderFlag = ref(false); // 默认使用自定义表头，获取数据后更新表头及状态
