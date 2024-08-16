@@ -177,4 +177,23 @@
     }
     return obj;
   };
+  // 解决报错的听说修复了，不知道
+  const debounce = (fn, delay) => {
+    let timer;
+    return (...args) => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+      timer = setTimeout(() => {
+        fn(...args);
+      }, delay);
+    };
+  };
+  const resizeObserver = window.ResizeObserver;
+  window.ResizeObserver = class ResizeObserver extends resizeObserver {
+    constructor(callback) {
+      callback = debounce(callback, 200);
+      super(callback);
+    }
+  };
 </script>
