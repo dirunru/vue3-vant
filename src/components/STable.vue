@@ -1,6 +1,11 @@
 <template>
   <div class="s-table">
-    <el-table row-key="id" :border="props.border" :max-height="props.height" :data="props.tableData">
+    <el-table
+      row-key="id"
+      :border="props.border"
+      :max-height="props.height"
+      :data="props.tableData"
+    >
       <!-- 通过 tableColConfig 进行循环渲染 -->
       <el-table-column
         v-for="item in props.tableColConfig"
@@ -21,9 +26,7 @@
           </template>
         </template>
       </el-table-column>
-      <template #empty>
-        暂无数据
-      </template>
+      <template #empty> 暂无数据 </template>
     </el-table>
   </div>
 </template>
@@ -50,7 +53,7 @@
       type: Number,
       default: 300
     }
-  })
+  });
 </script>
 
 <!-- <style lang="less">
