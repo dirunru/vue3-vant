@@ -105,6 +105,14 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: "downLoad" */ '../views/downLoad.vue')
   },
   {
+    path: '/indexBar',
+    name: 'indexBar',
+    meta: {
+      title: '索引导航'
+    },
+    component: () => import(/* webpackChunkName: "indexBar" */ '../views/IndexBar.vue')
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'not-found',
     meta: {

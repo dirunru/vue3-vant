@@ -76,6 +76,11 @@
           path: 'downLoad'
         },
         {
+          title: '索引导航',
+          icon: 'cart-o',
+          path: 'indexBar'
+        },
+        {
           title: '嵌套路由',
           icon: 'cart-o',
           path: 'black'
