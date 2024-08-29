@@ -3,7 +3,7 @@
     <nav class="bar">
       <ol>
         <li v-for="(item, index) in list" :key="item.value">
-          <a @click="scrollTo('#part-' + item.value)" :class="[activeIndex == index + 1 ? 'active' : '']">
+          <a @click="scrollTo('#part-' + item.value, index)" :class="[activeIndex == index + 1 ? 'active' : '']">
             {{ item.text }}
           </a>
         </li>
@@ -12,7 +12,7 @@
     <div class="index-content">
       <template v-for="item in list" :key="item.value">
         <section :id="`part-${item.value}`" :style="{ paddingTop: `${distanceTop}px`, marginTop: `-${distanceTop}px` }">
-          <slot name="content">
+          <slot name="content" :item="item">
             <h2>section{{ item.text }}</h2>
           </slot>
         </section>
@@ -72,14 +72,25 @@
     },
     distanceTop: { type: Number, default: 0 }
   });
-  const scrollTo = (selector) => {
+  const scrollTo = (selector, index) => {
+    activeIndex.value = index + 1;
     const element = document.querySelector(selector);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+    // 点击时暂停页面的滚动监听事件，防止点击时导航高亮出现走马灯效果；
+    // 此处的定时器存在缺陷，点击完2秒之内滚动还是会偶现走马灯现象；
+    isScroll.value = false;
+    let timeId = '';
+    clearTimeout(timeId);
+    timeId = setTimeout(() => {
+      isScroll.value = true;
+    }, 2000);
   };
-  const activeIndex = ref('');
+  const isScroll = ref(true); // 点击导航栏时，暂时停止监听页面滚动
+  const activeIndex = ref(0);
   const onScroll = throttle((e) => {
+    if (!isScroll.value) return;
     console.log('滚动', e);
     const navContents = document.querySelectorAll('.index-content section');
     // 所有锚点元素的 offsetTop
@@ -96,7 +107,6 @@
       }
     }
     activeIndex.value = navIndex;
-    // console.log('navContents---', navIndex);
   }, 300);
 
   const boxRef = ref(null);
@@ -113,7 +123,6 @@
   #bar-box {
     width: 100%;
     height: 100%;
-    border: solid 1px red;
     overflow-y: auto;
     ol {
       position: fixed;
@@ -132,6 +141,10 @@
           text-decoration: none;
           padding: 2px 8px;
           border-radius: 4px;
+          // &:hover {
+          //   color: #fff;
+          //   background: linear-gradient(180deg, #ffacac 50%, #ff4c4a 100%);
+          // }
         }
         .active {
           color: #fff;
@@ -143,8 +156,6 @@
     .index-content {
       width: 100%;
       section {
-        padding: 50px 0;
-        height: 500px;
         h2 {
           text-align: center;
         }
