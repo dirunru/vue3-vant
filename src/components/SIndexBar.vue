@@ -13,7 +13,7 @@
       <template v-for="item in list" :key="item.value">
         <section :id="`part-${item.value}`" :style="{ paddingTop: `${distanceTop}px`, marginTop: `-${distanceTop}px` }">
           <slot name="content">
-            <h2>section{{ item }}</h2>
+            <h2>section{{ item.text }}</h2>
           </slot>
         </section>
       </template>
