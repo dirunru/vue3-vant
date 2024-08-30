@@ -70,6 +70,7 @@
         }
       ]
     },
+    // 如果使用了postcss-px-to-viewport 就不要使用内联样式
     distanceTop: { type: Number, default: 0 }
   });
   const scrollTo = (selector, index) => {

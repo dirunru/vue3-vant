@@ -1,3 +1,4 @@
+// 批量导出图片
 export const batchImportPictures = () =>{
   const req = require.context('./assets/img/icon', false, /\.png$/)
   let imagesNameArr = [];
@@ -45,3 +46,19 @@ export const batchImportPictures = () =>{
     }
     return spanArr;
   };
+/**
+ * 移除空值
+ * @param {*} Object
+ * @returns
+ */
+
+export const removeEmptyValues = (obj:any) => {
+  for (const key in obj) {
+    if (obj[key] === '' || obj[key] === null || obj[key] === undefined) {
+      delete obj[key]
+    } else if (typeof obj[key] === 'object' && Object.keys(obj[key]).length === 0) {
+      delete obj[key]
+    }
+  }
+  return obj
+}

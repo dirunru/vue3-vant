@@ -36,7 +36,8 @@ const routes: Array<RouteRecordRaw> = [
     path: '/about',
     name: 'about',
     meta: {
-      title: '关于'
+      title: '关于',
+      type: 'function'
     },
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
@@ -44,7 +45,8 @@ const routes: Array<RouteRecordRaw> = [
     path: '/table',
     name: 'table',
     meta: {
-      title: '表格'
+      title: '表格',
+      type: 'function'
     },
     component: () => import(/* webpackChunkName: "tabel" */ '../views/Table.vue')
   },
@@ -52,7 +54,8 @@ const routes: Array<RouteRecordRaw> = [
     path: '/echart',
     name: 'echart',
     meta: {
-      title: '环表'
+      title: '环表',
+      type: 'function'
     },
     component: () => import(/* webpackChunkName: "echart" */ '../views/Echart.vue')
   },
@@ -60,7 +63,8 @@ const routes: Array<RouteRecordRaw> = [
     path: '/dicStore',
     name: 'dicStore',
     meta: {
-      title: '字典缓存'
+      title: '字典缓存',
+      type: 'function'
     },
     component: () => import(/* webpackChunkName: "form" */ '../views/dicStore.vue')
   },
@@ -68,7 +72,8 @@ const routes: Array<RouteRecordRaw> = [
     path: '/form',
     name: 'form',
     meta: {
-      title: '表单封装'
+      title: '表单封装',
+      type: 'function'
     },
     component: () => import(/* webpackChunkName: "form" */ '../views/Form.vue')
   },
@@ -76,7 +81,8 @@ const routes: Array<RouteRecordRaw> = [
     path: '/upload',
     name: 'upload',
     meta: {
-      title: '上传'
+      title: '上传',
+      type: 'function'
     },
     component: () => import(/* webpackChunkName: "form" */ '../views/Upload.vue')
   },
@@ -84,7 +90,8 @@ const routes: Array<RouteRecordRaw> = [
     path: '/complexTable',
     name: 'complexTable',
     meta: {
-      title: '上传'
+      title: '上传',
+      type: 'function'
     },
     component: () => import(/* webpackChunkName: "form" */ '../views/ComplexTable.vue')
   },
@@ -92,7 +99,8 @@ const routes: Array<RouteRecordRaw> = [
     path: '/tableSpan',
     name: 'tableSpan',
     meta: {
-      title: '上传'
+      title: '上传',
+      type: 'function'
     },
     component: () => import(/* webpackChunkName: "form" */ '../views/TableSpan.vue')
   },
@@ -100,7 +108,8 @@ const routes: Array<RouteRecordRaw> = [
     path: '/downLoad',
     name: 'downLoad',
     meta: {
-      title: '下载导入'
+      title: '下载导入',
+      type: 'function'
     },
     component: () => import(/* webpackChunkName: "downLoad" */ '../views/downLoad.vue')
   },
@@ -108,9 +117,19 @@ const routes: Array<RouteRecordRaw> = [
     path: '/indexBar',
     name: 'indexBar',
     meta: {
-      title: '索引导航'
+      title: '索引导航',
+      type: 'function'
     },
     component: () => import(/* webpackChunkName: "indexBar" */ '../views/IndexBar.vue')
+  },
+  {
+    path: '/refreshList',
+    name: 'refreshList',
+    meta: {
+      title: '下拉刷新',
+      type: 'function'
+    },
+    component: () => import(/* webpackChunkName: "refreshList" */ '../views/RefreshList.vue')
   },
   {
     path: '/:pathMatch(.*)*',

@@ -36,6 +36,7 @@ declare module 'vue' {
     IndexBar: typeof import('./../src/views/IndexBar.vue')['default']
     NavLayout: typeof import('./../src/views/layout/NavLayout.vue')['default']
     NotFoundView: typeof import('./../src/views/NotFoundView.vue')['default']
+    RefreshList: typeof import('./../src/views/RefreshList.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SComplexTable: typeof import('./../src/components/SComplexTable.vue')['default']

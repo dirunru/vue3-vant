@@ -23,69 +23,14 @@
 </template>
 
 <script setup>
+  import { reactive, onMounted } from 'vue';
   import { useRoute, useRouter } from 'vue-router';
-  const { push } = useRouter();
-  const menu_list = [
+  const { push, options } = useRouter();
+  const menu_list = reactive([
     {
       type: 'function',
       title: '功能',
-      list: [
-        {
-          title: '分类',
-          icon: 'apps-o',
-          path: 'about'
-        },
-        {
-          title: '环状表',
-          icon: 'cart-o',
-          path: 'echart'
-        },
-        {
-          title: '表格',
-          icon: 'cart-o',
-          path: 'table'
-        },
-        {
-          title: '复杂表格',
-          icon: 'cart-o',
-          path: 'complexTable'
-        },
-        {
-          title: '合并表格',
-          icon: 'cart-o',
-          path: 'tableSpan'
-        },
-        {
-          title: 'form表单',
-          icon: 'cart-o',
-          path: 'form'
-        },
-        {
-          title: '上传图片视频',
-          icon: 'cart-o',
-          path: 'upload'
-        },
-        {
-          title: 'dicStore',
-          icon: 'cart-o',
-          path: 'dicStore'
-        },
-        {
-          title: '下载导入',
-          icon: 'cart-o',
-          path: 'downLoad'
-        },
-        {
-          title: '索引导航',
-          icon: 'cart-o',
-          path: 'indexBar'
-        },
-        {
-          title: '嵌套路由',
-          icon: 'cart-o',
-          path: 'black'
-        }
-      ]
+      list: []
     },
     {
       type: 'layout',
@@ -97,35 +42,26 @@
           path: 'echart-2'
         }
       ]
-    },
-    {
-      type: 'echarts',
-      title: 'Echarts',
-      list: [
-        {
-          title: '首页',
-          icon: 'home-o',
-          path: 'home'
-        },
-        {
-          title: '分类',
-          icon: 'apps-o',
-          path: 'category'
-        },
-        {
-          title: '购物车',
-          icon: 'cart-o',
-          path: 'cart'
-        }
-      ]
     }
-  ];
+  ]);
   const goIn = (row) => {
     console.log(row);
     push({
       name: row.path
     });
   };
+  onMounted(() => {
+    options.routes.map((item) => {
+      console.log('item', item);
+      if (item.meta?.type === 'function') {
+        menu_list[0].list.push({
+          title: item.meta.title,
+          icon: 'home-o',
+          path: item.name
+        });
+      }
+    });
+  });
 </script>
 
 <style lang="less" scoped>
