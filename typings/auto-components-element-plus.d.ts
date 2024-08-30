@@ -39,6 +39,7 @@ declare module 'vue' {
     RefreshList: typeof import('./../src/views/RefreshList.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SBack: typeof import('./../src/components/SBack.vue')['default']
     SComplexTable: typeof import('./../src/components/SComplexTable.vue')['default']
     SEchart: typeof import('./../src/components/SEchart.vue')['default']
     SForm: typeof import('./../src/components/SForm.vue')['default']

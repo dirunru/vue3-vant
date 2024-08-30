@@ -11,18 +11,22 @@
         v-model:loading="pageData.loading"
         :finished="pageData.finished"
         finished-text="没有更多了"
+        error-text="加载失败"
+        loading-text="加载中ing..."
         @load="debounceFunc()"
       >
         <template v-for="item in pageData.list" :key="item.id || item">
           <div class="box">{{ item }}</div>
         </template>
       </van-list>
-      <van-back-top />
+      <!-- <van-back-top /> -->
+      <s-back />
     </van-pull-refresh>
   </div>
 </template>
 
 <script setup>
+  import SBack from '@/components/SBack.vue';
   import { ref, reactive } from 'vue';
   import { debounce } from 'lodash-es';
   const pageData = reactive({
