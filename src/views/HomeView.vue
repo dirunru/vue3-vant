@@ -52,7 +52,7 @@
   };
   onMounted(() => {
     options.routes.map((item) => {
-      console.log('item', item);
+      // console.log('item', item);
       if (item.meta?.type === 'function') {
         menu_list[0].list.push({
           title: item.meta.title,
