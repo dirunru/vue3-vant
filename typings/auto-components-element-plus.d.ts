@@ -44,6 +44,7 @@ declare module 'vue' {
     SEchart: typeof import('./../src/components/SEchart.vue')['default']
     SForm: typeof import('./../src/components/SForm.vue')['default']
     SIndexBar: typeof import('./../src/components/SIndexBar.vue')['default']
+    SScan: typeof import('./../src/components/SScan.vue')['default']
     STable: typeof import('./../src/components/STable.vue')['default']
     SUpload: typeof import('./../src/components/SUpload.vue')['default']
     SwipeTag: typeof import('./../src/components/SwipeTag.vue')['default']
