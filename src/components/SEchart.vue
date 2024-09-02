@@ -1,14 +1,22 @@
 <template>
-  <div class="echart-container" ref="echartsRef" :style="{ width, height }"></div>
+  <div :id="id" :class="className" ref="echartsRef" :style="{ width, height }"></div>
 </template>
 
 <script>
-  import { onMounted, onUnmounted, ref, watch } from 'vue'
-  import * as echarts from 'echarts'
+  import { onMounted, onUnmounted, ref, watch } from 'vue';
+  import * as echarts from 'echarts';
 
   export default {
     name: 'SEchart',
     props: {
+      id: {
+        type: String,
+        default: 'chart'
+      },
+      className: {
+        type: String,
+        default: 'echart-container'
+      },
       option: {
         type: Object,
         required: true
@@ -23,37 +31,37 @@
       }
     },
     setup(props) {
-      const echartsRef = ref(null)
-      let chartInstance = null
+      const echartsRef = ref(null);
+      let chartInstance = null;
 
       const initChart = () => {
-        chartInstance = echarts.init(echartsRef.value)
-        chartInstance.setOption(props.option)
-      }
+        chartInstance = echarts.init(echartsRef.value);
+        chartInstance.setOption(props.option);
+      };
 
       onMounted(() => {
-        initChart()
-        window.addEventListener('resize', chartInstance.resize)
-      })
+        initChart();
+        window.addEventListener('resize', chartInstance.resize);
+      });
 
       onUnmounted(() => {
-        window.removeEventListener('resize', chartInstance.resize)
-        chartInstance.dispose()
-      })
+        window.removeEventListener('resize', chartInstance.resize);
+        chartInstance.dispose();
+      });
 
       watch(
         () => props.option,
-        newOption => {
+        (newOption) => {
           if (chartInstance) {
-            chartInstance.setOption(newOption)
+            chartInstance.setOption(newOption);
           }
         },
         { deep: true }
-      )
+      );
 
-      return { echartsRef }
+      return { echartsRef };
     }
-  }
+  };
 </script>
 
 <style lang="less">
