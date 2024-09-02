@@ -10,7 +10,7 @@
    * 回到底部和回到顶部的封装
    *
    */
-  import { onMounted, ref, defineProps, onBeforeMount } from 'vue';
+  import { onMounted, ref, defineProps, onBeforeMount, nextTick } from 'vue';
   import { throttle } from 'lodash-es';
   const showType = ref('');
   defineProps({
@@ -34,9 +34,12 @@
     }
   }, 300);
   const goTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+    let currentElement = document.getElementsByClassName('refresh-list')[0];
+    nextTick(() => {
+      currentElement.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     });
   };
   onBeforeMount(() => {
