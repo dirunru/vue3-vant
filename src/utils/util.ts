@@ -62,3 +62,6 @@ export const removeEmptyValues = (obj:any) => {
   }
   return obj
 }
+
+export const inBrowser = typeof window !== 'undefined';
+export const isIOS = () => inBrowser ? /ios|iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase()): false;
