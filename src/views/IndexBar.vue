@@ -2,11 +2,9 @@
   <div class="layout">
     <div class="box"></div>
     <div class="content">
-      <SIndexBar :distance-top="30">
-        <template #content="slotProps">
-          <div class="index-box">
-            <h1>{{ slotProps.item.text }}</h1>
-          </div>
+      <SIndexBar :indexList="indexList">
+        <template v-for="item in indexList" :key="item.index">
+          <h1>{{ item.text }}</h1>
         </template>
       </SIndexBar>
     </div>
@@ -15,7 +13,33 @@
 
 <script setup>
   import { ref, reactive } from 'vue';
-  import SIndexBar from '@/components/SIndexBar.vue';
+  import SIndexBar from '@/components/SIndexBar';
+  const indexList = [
+    {
+      text: 'A',
+      index: '1'
+    },
+    {
+      text: 'B',
+      index: '2'
+    },
+    {
+      text: 'C',
+      index: '3'
+    },
+    {
+      text: 'D',
+      index: '4'
+    },
+    {
+      text: 'E',
+      index: '5'
+    },
+    {
+      text: 'F',
+      index: '6'
+    }
+  ];
 </script>
 <style lang="less" scoped>
   .layout {
