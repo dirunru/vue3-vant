@@ -2,7 +2,7 @@
   <div class="layout">
     <div class="box"></div>
     <div class="content">
-      <SIndexBar :indexList="indexList">
+      <SIndexBar :indexList="indexList" :sticky="false">
         <template v-for="item in indexList" :key="item.index">
           <SIndexAnchor :index="item.index">
             {{ item.index + ':' + item.text }}
@@ -121,6 +121,8 @@
       margin-top: 66px;
       height: calc(100vh - 66px);
       overflow: auto;
+      margin-left: 10px;
+      margin-right: 10px;
       .section-box {
         height: 300px;
         background: #fff;
