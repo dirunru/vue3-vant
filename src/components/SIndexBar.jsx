@@ -51,7 +51,6 @@ export default defineComponent({
     const { children, linkChildren } = useChildren(INDEX_BAR_KEY);
     let selectActiveIndex = '';
     linkChildren({ props });
-    console.log('getCurrentInstance()', getCurrentInstance());
     const sidebarStyle = computed(() => {
       if (isDef(props.zIndex)) {
         return {
@@ -80,7 +79,6 @@ export default defineComponent({
 
       return -1;
     };
-    console.log('children', children);
     const getMatchAnchor = (index) => children.find((item) => String(item.index) === index);
 
     const onScroll = () => {
@@ -108,9 +106,7 @@ export default defineComponent({
       } else {
         active = getActiveAnchor(scrollTop, rects);
       }
-
-      activeAnchor.value = indexList[active];
-
+      activeAnchor.value = indexList[active]?.index;
       if (sticky) {
         children.forEach((item, index) => {
           const { state, $el } = item;
@@ -160,7 +156,7 @@ export default defineComponent({
 
     const renderIndexes = () =>
       props.indexList.map((item) => {
-        const active = item.value === activeAnchor.value;
+        const active = item.index === activeAnchor.value;
         return (
           <span
             class={bem('index', { active })}
@@ -175,12 +171,10 @@ export default defineComponent({
     const scrollTo = (index) => {
       selectActiveIndex = String(index);
       const match = getMatchAnchor(selectActiveIndex);
-      console.log('match', match);
       if (match) {
         const scrollTop = getScrollTop(scrollParent.value);
         const scrollParentRect = useRect(scrollParent);
         const { offsetHeight } = document.documentElement;
-
         match.$el.scrollIntoView();
 
         if (scrollTop === offsetHeight - scrollParentRect.height) {

@@ -4,6 +4,9 @@
     <div class="content">
       <SIndexBar :indexList="indexList">
         <template v-for="item in indexList" :key="item.index">
+          <SIndexAnchor :index="item.index">
+            <h5>{{ item.index + ':' + item.text }}</h5>
+          </SIndexAnchor>
           <h1>{{ item.text }}</h1>
         </template>
       </SIndexBar>
@@ -14,6 +17,7 @@
 <script setup>
   import { ref, reactive } from 'vue';
   import SIndexBar from '@/components/SIndexBar';
+  import SIndexAnchor from '@/components/SIndexAnchor';
   const indexList = [
     {
       text: 'A',
@@ -38,6 +42,46 @@
     {
       text: 'F',
       index: '6'
+    },
+    {
+      text: 'G',
+      index: '7'
+    },
+    {
+      text: 'H',
+      index: '8'
+    },
+    {
+      text: 'I',
+      index: '9'
+    },
+    {
+      text: 'J',
+      index: '10'
+    },
+    {
+      text: 'K',
+      index: '11'
+    },
+    {
+      text: 'L',
+      index: '12'
+    },
+    {
+      text: 'M',
+      index: '13'
+    },
+    {
+      text: 'N',
+      index: '14'
+    },
+    {
+      text: 'O',
+      index: '15'
+    },
+    {
+      text: 'P',
+      index: '16'
     }
   ];
 </script>

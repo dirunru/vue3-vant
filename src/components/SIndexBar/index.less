@@ -32,3 +32,30 @@
     }
   }
 }
+
+.s-van-index-bar {
+  &__sidebar {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    z-index: var(--van-index-bar-sidebar-z-index);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    transform: translateY(-50%);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  &__index {
+    padding: 0 var(--van-padding-xs) 0 var(--van-padding-md);
+    font-weight: var(--van-font-bold);
+    font-size: var(--van-index-bar-index-font-size);
+    line-height: var(--van-index-bar-index-line-height);
+
+    &--active {
+      color: var(--van-index-bar-index-active-color);
+      font-weight: bold;
+    }
+  }
+}

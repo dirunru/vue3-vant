@@ -49,7 +49,6 @@ export function sortChildren(parent, publicChildren, internalChildren) {
 }
 
 export function useChildren(key) {
-  console.log('key', key);
   const publicChildren = reactive([]);
   const internalChildren = reactive([]);
   const parent = getCurrentInstance();
@@ -68,7 +67,6 @@ export function useChildren(key) {
       publicChildren.splice(index, 1);
       internalChildren.splice(index, 1);
     };
-
     provide(
       key,
       Object.assign(

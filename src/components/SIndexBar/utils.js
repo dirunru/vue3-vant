@@ -1,4 +1,6 @@
 import { unref } from 'vue';
+export const BORDER = 'van-hairline';
+export const BORDER_BOTTOM = `${BORDER}--bottom`;
 export const isObject = (val) => val !== null && typeof val === 'object';
 export const isDef = (val) => val !== undefined && val !== null;
 export const isFunction = (val) => typeof val === 'function';
@@ -82,6 +84,15 @@ export function setScrollTop(el, value) {
     el.scrollTo(el.scrollX, value);
   }
 }
+
+export function getZIndexStyle(zIndex) {
+  const style = {};
+  if (zIndex !== undefined) {
+    style.zIndex = +zIndex;
+  }
+  return style;
+}
+
 export function getRootScrollTop() {
   return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 }
