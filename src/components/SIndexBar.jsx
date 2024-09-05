@@ -21,7 +21,7 @@ function genAlphabet() {
     .map((_, i) => String.fromCharCode(charCodeOfA + i));
   return indexList;
 }
-
+// bem: callBack回调函数
 const [name, bem] = createNamespace('index-bar');
 
 export const indexBarProps = {
@@ -159,7 +159,7 @@ export default defineComponent({
         const active = item.index === activeAnchor.value;
         return (
           <span
-            class={bem('index', { active })}
+            class={bem('index', { active: active, red: item.finish, green: !item.finish })}
             style={active ? highlightStyle.value : undefined}
             data-index={item.index}
           >

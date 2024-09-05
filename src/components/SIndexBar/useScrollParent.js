@@ -24,8 +24,7 @@ export function getScrollParent(el, root) {
 }
 
 export function useScrollParent(el, root) {
-  const scrollParent = ref();
-
+  const scrollParent = ref(null);
   onMounted(() => {
     if (el.value) {
       scrollParent.value = getScrollParent(el.value, root);

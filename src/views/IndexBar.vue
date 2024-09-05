@@ -7,7 +7,9 @@
           <SIndexAnchor :index="item.index">
             {{ item.index + ':' + item.text }}
           </SIndexAnchor>
-          <h1>{{ item.text }}</h1>
+          <div class="section-box">
+            {{ item.text }}
+          </div>
         </template>
       </SIndexBar>
     </div>
@@ -21,67 +23,83 @@
   const indexList = [
     {
       text: 'A',
-      index: '1'
+      index: '1',
+      finish: true
     },
     {
       text: 'B',
-      index: '2'
+      index: '2',
+      finish: true
     },
     {
       text: 'C',
-      index: '3'
+      index: '3',
+      finish: true
     },
     {
       text: 'D',
-      index: '4'
+      index: '4',
+      finish: true
     },
     {
       text: 'E',
-      index: '5'
+      index: '5',
+      finish: false
     },
     {
       text: 'F',
-      index: '6'
+      index: '6',
+      finish: false
     },
     {
       text: 'G',
-      index: '7'
+      index: '7',
+      finish: false
     },
     {
       text: 'H',
-      index: '8'
+      index: '8',
+      finish: false
     },
     {
       text: 'I',
-      index: '9'
+      index: '9',
+      finish: true
     },
     {
       text: 'J',
-      index: '10'
+      index: '10',
+      finish: true
     },
     {
       text: 'K',
-      index: '11'
+      index: '11',
+      finish: true
     },
     {
       text: 'L',
-      index: '12'
+      index: '12',
+      finish: true
     },
     {
       text: 'M',
-      index: '13'
+      index: '13',
+      finish: true
     },
     {
       text: 'N',
-      index: '14'
+      index: '14',
+      finish: true
     },
     {
       text: 'O',
-      index: '15'
+      index: '15',
+      finish: true
     },
     {
       text: 'P',
-      index: '16'
+      index: '16',
+      finish: true
     }
   ];
 </script>
@@ -89,31 +107,24 @@
   .layout {
     display: flex;
     flex-direction: column;
-    margin: 0 12px;
     .box {
       position: fixed;
       top: 0;
-      height: 30px;
+      height: 50px;
       width: 100%;
       background: #fff;
-      border-radius: 10px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
       opacity: 0.7;
     }
     .content {
-      margin-top: 30px;
-      height: calc(100vh - 30px);
+      margin-top: 66px;
+      height: calc(100vh - 66px);
       overflow: auto;
-      .index-box {
-        width: 100%;
-        height: 200px;
+      .section-box {
+        height: 300px;
         background: #fff;
-        margin-bottom: 10px;
         border-radius: 10px;
-        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
-        h1 {
-          text-align: center;
-          line-height: 200px;
-        }
       }
     }
   }

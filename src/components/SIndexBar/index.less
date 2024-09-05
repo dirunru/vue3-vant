@@ -21,14 +21,23 @@
   }
 
   &__index {
-    padding: 0 var(--van-padding-xs) 0 var(--van-padding-md);
+    // padding: 0 var(--van-padding-xs) 0 var(--van-padding-md);
+    padding: 2px 4px;
     font-weight: var(--van-font-bold);
     font-size: var(--van-index-bar-index-font-size);
     line-height: var(--van-index-bar-index-line-height);
-
+    &--red {
+      color:red;
+    }
+    &--green {
+      color:green;
+    }
     &--active {
       color: var(--van-index-bar-index-active-color);
       font-weight: bold;
+      color: #fff;
+      background-image: linear-gradient( 135deg, #FDEB71 10%, #F8D800 100%);
+      border-radius: 4px;
     }
   }
 }
