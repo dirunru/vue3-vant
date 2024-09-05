@@ -5,7 +5,7 @@
       <SIndexBar :indexList="indexList">
         <template v-for="item in indexList" :key="item.index">
           <SIndexAnchor :index="item.index">
-            <h5>{{ item.index + ':' + item.text }}</h5>
+            {{ item.index + ':' + item.text }}
           </SIndexAnchor>
           <h1>{{ item.text }}</h1>
         </template>

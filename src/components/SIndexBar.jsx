@@ -202,7 +202,6 @@ export default defineComponent({
     };
 
     const onClickSidebar = (event) => {
-      console.log('event.target', event.target);
       scrollToElement(event.target);
     };
 

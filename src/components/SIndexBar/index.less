@@ -1,7 +1,7 @@
 :root,
 :host {
   --van-index-bar-sidebar-z-index: 2;
-  --van-index-bar-index-font-size: var(--van-font-size-xs);
+  --van-index-bar-index-font-size: 14px;
   --van-index-bar-index-line-height: var(--van-line-height-xs);
   --van-index-bar-index-active-color: var(--van-primary-color);
 }
@@ -33,29 +33,22 @@
   }
 }
 
-.s-van-index-bar {
-  &__sidebar {
+.s-van-index-anchor {
+  z-index: var(--van-index-anchor-z-index);
+  box-sizing: border-box;
+  padding: var(--van-index-anchor-padding);
+  color: var(--van-index-anchor-text-color);
+  font-weight: var(--van-index-anchor-font-weight);
+  font-size: var(--van-index-anchor-font-size);
+  line-height: var(--van-index-anchor-line-height);
+  background: var(--van-index-anchor-background);
+
+  &--sticky {
     position: fixed;
-    top: 50%;
+    top: 0;
     right: 0;
-    z-index: var(--van-index-bar-sidebar-z-index);
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    transform: translateY(-50%);
-    cursor: pointer;
-    user-select: none;
-  }
-
-  &__index {
-    padding: 0 var(--van-padding-xs) 0 var(--van-padding-md);
-    font-weight: var(--van-font-bold);
-    font-size: var(--van-index-bar-index-font-size);
-    line-height: var(--van-index-bar-index-line-height);
-
-    &--active {
-      color: var(--van-index-bar-index-active-color);
-      font-weight: bold;
-    }
+    left: 0;
+    color: var(--van-index-anchor-sticky-text-color);
+    background: var(--van-index-anchor-sticky-background);
   }
 }
