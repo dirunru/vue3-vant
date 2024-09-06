@@ -51,6 +51,7 @@ export default defineComponent({
     const { children, linkChildren } = useChildren(INDEX_BAR_KEY);
     let selectActiveIndex = '';
     linkChildren({ props });
+    // 设置层级
     const sidebarStyle = computed(() => {
       if (isDef(props.zIndex)) {
         return {
@@ -58,7 +59,7 @@ export default defineComponent({
         };
       }
     });
-
+    // 设置高亮的颜色
     const highlightStyle = computed(() => {
       if (props.highlightColor) {
         return {
@@ -71,7 +72,6 @@ export default defineComponent({
       for (let i = children.length - 1; i >= 0; i--) {
         const prevHeight = i > 0 ? rects[i - 1].height : 0;
         const reachTop = props.sticky ? prevHeight + props.stickyOffsetTop : 0;
-
         if (scrollTop + reachTop >= rects[i].top) {
           return i;
         }
@@ -80,12 +80,10 @@ export default defineComponent({
       return -1;
     };
     const getMatchAnchor = (index) => children.find((item) => String(item.index) === index);
-
     const onScroll = () => {
       if (isHidden(root)) {
         return;
       }
-
       const { sticky, indexList } = props;
       const scrollTop = getScrollTop(scrollParent.value);
       const scrollParentRect = useRect(scrollParent);

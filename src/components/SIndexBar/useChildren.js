@@ -52,9 +52,10 @@ export function useChildren(key) {
   const publicChildren = reactive([]);
   const internalChildren = reactive([]);
   const parent = getCurrentInstance();
-
+  console.log('parent---s-van-index-bar', parent);
   const linkChildren = (value) => {
     const link = (child) => {
+      console.log('child------anchor', child)
       if (child.proxy) {
         internalChildren.push(child);
         publicChildren.push(child.proxy);

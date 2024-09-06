@@ -54,6 +54,17 @@
         (newOption) => {
           if (chartInstance) {
             chartInstance.setOption(newOption);
+            // 判断是否是有数据，没有书卷展示默认的‘暂无数据’
+            // let isEmpty = newOption.series.some((item) => item.data.length === 0);
+            // if (isEmpty) {
+            //   chartInstance.showLoading({
+            //     text: '暂无数据',
+            //     fontSize: 18,
+            //     color: 'transparent', // loading颜色，设置成透明或白色，不然会显示loading状态
+            //     textColor: '#ccc', // 文字颜色
+            //     maskColor: 'rgba(255, 255, 255, 0.2)' // 背景色
+            //   });
+            // }
           }
         },
         { deep: true }

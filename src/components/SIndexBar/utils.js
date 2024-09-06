@@ -38,7 +38,7 @@ export function createTranslate(name) {
     return isFunction(message) ? message(...args) : message;
   };
 }
-// 轮询进行拼接class类名
+// 轮询进行拼接class类名：根据传入的参数，进行判断， {active:true}, mods[key]为true就直接进行拼接
 function genBem(name, mods) {
   if (!mods) {
     return '';
@@ -49,7 +49,6 @@ function genBem(name, mods) {
   if (Array.isArray(mods)) {
     return mods.reduce((ret, item) => ret + genBem(name, item), '');
   }
-  console.log('name, mods', name, mods)
   return Object.keys(mods).reduce((ret, key) => ret + (mods[key] ? genBem(name, key) : ''), '');
 }
 

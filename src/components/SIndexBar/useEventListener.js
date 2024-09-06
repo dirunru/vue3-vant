@@ -1,29 +1,13 @@
-import {
-  isRef,
-  onDeactivated,
-  onUnmounted,
-  unref,
-  watch
-} from 'vue';
+import { isRef, onDeactivated, onUnmounted, unref, watch } from 'vue';
 import { onMountedOrActivated } from './onMountedOrActivated';
 import { inBrowser } from './utils';
-
-
-
-export function useEventListener(
-  type,
-  listener,
-  options,
-) {
+export function useEventListener(type, listener, options) {
   if (!inBrowser) {
     return;
   }
-
   const { target = window, passive = false, capture = false } = options;
-
   let cleaned = false;
   let attached;
-
   const add = (target) => {
     if (cleaned) {
       return;
@@ -33,7 +17,7 @@ export function useEventListener(
     if (element && !attached) {
       element.addEventListener(type, listener, {
         capture,
-        passive,
+        passive
       });
       attached = true;
     }
