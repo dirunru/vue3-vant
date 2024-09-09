@@ -1,0 +1,63 @@
+:root,
+:host {
+  --van-index-bar-sidebar-z-index: 2;
+  --van-index-bar-index-font-size: 14px;
+  --van-index-bar-index-line-height: var(--van-line-height-xs);
+  --van-index-bar-index-active-color: var(--van-primary-color);
+}
+
+.s-van-index-bar {
+  &__sidebar {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    z-index: var(--van-index-bar-sidebar-z-index);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    transform: translateY(-50%);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  &__index {
+    // padding: 0 var(--van-padding-xs) 0 var(--van-padding-md);
+    padding: 2px 4px;
+    font-weight: var(--van-font-bold);
+    font-size: var(--van-index-bar-index-font-size);
+    line-height: var(--van-index-bar-index-line-height);
+    &--red {
+      color:red;
+    }
+    &--green {
+      color:green;
+    }
+    &--active {
+      color: var(--van-index-bar-index-active-color);
+      font-weight: bold;
+      color: #fff;
+      background-image: linear-gradient( 135deg, #FDEB71 10%, #F8D800 100%);
+      border-radius: 4px;
+    }
+  }
+}
+
+.s-van-index-anchor {
+  z-index: var(--van-index-anchor-z-index);
+  box-sizing: border-box;
+  padding: var(--van-index-anchor-padding);
+  color: var(--van-index-anchor-text-color);
+  font-weight: var(--van-index-anchor-font-weight);
+  font-size: var(--van-index-anchor-font-size);
+  line-height: var(--van-index-anchor-line-height);
+  background: var(--van-index-anchor-background);
+  // 吸顶布局
+  &--sticky {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    color: var(--van-index-anchor-sticky-text-color);
+    background: var(--van-index-anchor-sticky-background);
+  }
+}

@@ -42,6 +42,7 @@ unplugin-auto-import
 unplugin-element-plus
 unplugin-vue-components
 vue-echart
+@vue/babel-plugin-jsx // 支持jsx语法
 ```
 
 ```

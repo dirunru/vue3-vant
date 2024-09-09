@@ -5,7 +5,45 @@
 <script>
   import { onMounted, onUnmounted, ref, watch } from 'vue';
   import * as echarts from 'echarts';
+  import noData from '../../assets/img/images/noData02.png';
+  import echartTheme from '../../config/echart-theme.json';
 
+  /**
+   * 初始化一些基础配置
+   * @param {*} config
+   * @returns
+   */
+  const initOption = function (config) {
+    const option = {
+      title: {
+        show: true, // 是否要展示“暂无数据”矢量图
+        text: ' {a|}', // 写入占位符a，以便后续填充内容
+        x: 'center',
+        y: 'center',
+        subtext: '暂无数据', // 子标题
+        itemGap: -10, // 设置主副标题间隔
+        textStyle: {
+          rich: {
+            a: {
+              height: 60,
+              width: 100,
+              borderColor: '#fff',
+              align: 'center',
+              backgroundColor: {
+                image: noData
+              }
+            }
+          }
+        },
+        subtextStyle: {
+          // 配置副标题的文字样式
+          fontSize: 12,
+          color: 'rgba(0, 194, 255, 0.75)'
+        }
+      }
+    };
+    return option;
+  };
   export default {
     name: 'SEchart',
     props: {
@@ -35,7 +73,8 @@
       let chartInstance = null;
 
       const initChart = () => {
-        chartInstance = echarts.init(echartsRef.value);
+        echarts.registerTheme('customed', echartTheme);
+        chartInstance = echarts.init(echartsRef.value, 'customed');
         chartInstance.setOption(props.option);
       };
 
@@ -54,6 +93,13 @@
         (newOption) => {
           if (chartInstance) {
             chartInstance.setOption(newOption);
+            // 判断是否是有数据，没有书卷展示默认的‘暂无数据’
+            let isEmpty = newOption.series.some((item) => item.data.length === 0);
+            if (isEmpty) {
+              chartInstance.setOption(initOption());
+            } else {
+              chartInstance.setOption(newOption);
+            }
           }
         },
         { deep: true }
