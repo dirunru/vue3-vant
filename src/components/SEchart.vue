@@ -6,6 +6,7 @@
   import { onMounted, onUnmounted, ref, watch } from 'vue';
   import * as echarts from 'echarts';
   import noData from '../../assets/img/images/noData02.png';
+  import echartTheme from '../../config/echart-theme.json';
 
   /**
    * 初始化一些基础配置
@@ -72,7 +73,8 @@
       let chartInstance = null;
 
       const initChart = () => {
-        chartInstance = echarts.init(echartsRef.value);
+        echarts.registerTheme('customed', echartTheme);
+        chartInstance = echarts.init(echartsRef.value, 'customed');
         chartInstance.setOption(props.option);
       };
 
